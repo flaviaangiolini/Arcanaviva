@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Lune Nuove – Ester Miriam</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --gold: #8B6914;
+  --gold-light: #5c3d00;
+  --deep: #f0e6a0;
+  --text: #3d2b00;
+}
+body {
+  background: var(--deep);
+  color: var(--text);
+  font-family: 'Cormorant Garamond', serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+#bgCanvas { position: fixed; inset: 0; z-index: 0; }
+
+/* SOLE E LUNA */
+.sun {
+  position: fixed; top: 6%; left: 8%;
+  width: 80px; height: 80px; border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, #fff7d6 0%, #ffd700 40%, #ff8c00 100%);
+  box-shadow: 0 0 40px 18px rgba(255,200,50,0.4), 0 0 100px 50px rgba(255,150,0,0.18);
+  z-index: 1;
+  animation: sunGlow 5s ease-in-out infinite alternate;
+}
+@keyframes sunGlow {
+  from { box-shadow: 0 0 40px 18px rgba(255,200,50,0.4), 0 0 100px 50px rgba(255,150,0,0.18); }
+  to   { box-shadow: 0 0 60px 28px rgba(255,200,50,0.6), 0 0 140px 70px rgba(255,150,0,0.3); }
+}
+
+.moon {
+  position: fixed; top: 6%; right: 8%;
+  width: 80px; height: 80px; border-radius: 50%;
+  background: radial-gradient(circle at 38% 38%, #fffbe6 0%, #f5e99a 30%, #d4b84a 60%, #8a6a10 100%);
+  box-shadow: 0 0 40px 18px rgba(139,100,20,0.3), 0 0 100px 50px rgba(139,100,20,0.15);
+  z-index: 1;
+  animation: moonGlow 4s ease-in-out infinite alternate;
+}
+.moon::after {
+  content: ''; position: absolute; inset: 0; border-radius: 50%;
+  background: radial-gradient(circle at 70% 30%, transparent 40%, rgba(0,0,0,0.13) 100%);
+}
+@keyframes moonGlow {
+  from { box-shadow: 0 0 40px 18px rgba(139,100,20,0.3), 0 0 100px 50px rgba(139,100,20,0.15); }
+  to   { box-shadow: 0 0 60px 28px rgba(139,100,20,0.45), 0 0 140px 70px rgba(139,100,20,0.22); }
+}
+
+/* NAV */
+.nav {
+  position: relative; z-index: 20;
+  display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
+  padding: 22px 20px 0;
+}
+.nav a {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: 0.78rem;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--gold); text-decoration: none;
+  opacity: 0.75; transition: opacity 0.3s;
+}
+.nav a:hover, .nav a.active { opacity: 1; }
+
+/* HEADER */
+.header {
+  position: relative; z-index: 10;
+  text-align: center; padding: 40px 20px 20px;
+  animation: fadeIn 1.8s ease;
+}
+.header .subtitle {
+  font-style: italic; font-size: 0.78rem;
+  letter-spacing: 0.38em; color: var(--gold);
+  text-transform: uppercase; opacity: 0.85; margin-bottom: 12px;
+}
+.header h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.4rem, 5vw, 2.2rem);
+  color: #3d2000;
+  text-shadow: 0 0 20px rgba(245,217,80,0.5), 0 0 50px rgba(139,100,20,0.3);
+  margin-bottom: 10px; line-height: 1.3;
+}
+.divider {
+  display: flex; align-items: center; gap: 12px;
+  color: var(--gold); font-size: 0.9rem; opacity: 0.65;
+  margin: 12px auto; justify-content: center;
+}
+.divider::before, .divider::after {
+  content: ''; height: 1px; width: 60px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+/* LUMINARI BOX */
+.luminari {
+  position: relative; z-index: 10;
+  display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
+  max-width: 800px; margin: 0 auto 36px; padding: 0 20px;
+  animation: fadeIn 2s ease;
+}
+.luminare-card {
+  flex: 1; min-width: 240px; max-width: 340px;
+  background: linear-gradient(135deg, rgba(220,175,80,0.55), rgba(200,155,50,0.45));
+  border: 1.5px solid rgba(150,100,10,0.6);
+  border-radius: 16px; padding: 28px 22px; text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.luminare-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 35px rgba(180,120,20,0.4);
+}
+.luminare-icon { font-size: 2.8rem; margin-bottom: 12px; display: block; }
+.luminare-card h2 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1rem; color: #3d2000; margin-bottom: 8px;
+}
+.luminare-card .tag {
+  font-style: italic; font-size: 0.75rem;
+  color: var(--gold); opacity: 0.8;
+  letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 12px;
+}
+.luminare-card p {
+  font-size: 0.97rem; color: rgba(60,35,5,0.92); line-height: 1.8;
+}
+
+/* MAIN TEXT */
+.main-section {
+  position: relative; z-index: 10;
+  max-width: 720px; margin: 0 auto 40px; padding: 0 20px;
+  animation: fadeIn 2.2s ease;
+}
+.text-box {
+  background: linear-gradient(135deg, rgba(220,175,80,0.55), rgba(200,155,50,0.45));
+  border: 1.5px solid rgba(150,100,10,0.5);
+  border-radius: 16px; padding: 36px 32px;
+}
+.text-box h2 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.15rem; color: #3d2000;
+  text-align: center; margin-bottom: 10px;
+  text-shadow: 0 0 20px rgba(245,217,80,0.4);
+}
+.text-box .quote {
+  font-style: italic; font-size: 1.05rem;
+  color: var(--gold); opacity: 0.9;
+  text-align: center; line-height: 1.7;
+  margin-bottom: 22px; border-left: 2px solid rgba(139,100,20,0.35);
+  padding-left: 18px;
+}
+.text-box p {
+  font-size: 1.02rem;
+  color: rgba(60,35,5,0.92);
+  line-height: 1.95; margin-bottom: 18px;
+}
+.text-box p:last-child { margin-bottom: 0; }
+.text-box strong {
+  color: #3d2000; font-weight: 500; font-style: normal;
+}
+
+/* KEY POINTS */
+.key-points {
+  position: relative; z-index: 10;
+  max-width: 720px; margin: 0 auto 40px; padding: 0 20px;
+  animation: fadeIn 2.4s ease;
+}
+.points-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+.point {
+  background: linear-gradient(135deg, rgba(220,175,80,0.55), rgba(200,155,50,0.45));
+  border: 1px solid rgba(139,100,20,0.18);
+  border-radius: 12px; padding: 20px 18px; text-align: center;
+  transition: transform 0.3s, border-color 0.3s;
+}
+.point:hover { transform: translateY(-4px); border-color: rgba(139,100,20,0.4); }
+.point-icon { font-size: 1.8rem; margin-bottom: 8px; display: block; }
+.point h3 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.78rem; color: #3d2000; margin-bottom: 8px;
+}
+.point p { font-size: 0.88rem; color: rgba(60,35,5,0.88); line-height: 1.7; }
+
+/* CTA */
+.cta {
+  position: relative; z-index: 10;
+  text-align: center; padding: 0 20px 50px;
+  animation: fadeIn 2.6s ease;
+}
+.cta p { font-style: italic; font-size: 1rem; color: rgba(232,216,176,0.7); margin-bottom: 16px; }
+.cta-btn {
+  display: inline-block; padding: 13px 34px;
+  border: 1.5px solid var(--gold); border-radius: 40px;
+  color: #3d2000;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem; letter-spacing: 0.2em;
+  text-transform: uppercase; text-decoration: none;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.cta-btn:hover {
+  background: rgba(139,100,20,0.12);
+  box-shadow: 0 0 24px rgba(139,100,20,0.3);
+}
+
+/* RUNES */
+.rune {
+  position: fixed; font-size: 18px; color: var(--gold);
+  opacity: 0; animation: floatRune var(--dur, 8s) var(--delay, 0s) ease-in-out infinite;
+  z-index: 2; pointer-events: none;
+  text-shadow: 0 0 10px rgba(139,100,20,0.5);
+}
+@keyframes floatRune {
+  0%   { opacity: 0; transform: translateY(0) rotate(0deg); }
+  20%  { opacity: 0.5; }
+  80%  { opacity: 0.3; }
+  100% { opacity: 0; transform: translateY(-90px) rotate(25deg); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* AUDIO */
+#audioBtn {
+  position: fixed; bottom: 24px; right: 24px; z-index: 100;
+  width: 52px; height: 52px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #d4b840, #a08010);
+  border: 1.5px solid #8B6914;
+  box-shadow: 0 0 18px 4px rgba(139,100,20,0.3);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 1.4rem; transition: box-shadow 0.3s;
+}
+</style>
+</head>
+<body>
+
+<canvas id="bgCanvas"></canvas>
+<div class="sun"></div>
+<div class="moon"></div>
+
+<span class="rune" style="left:4%;  top:65%; --dur:9s;  --delay:0s">☽</span>
+<span class="rune" style="left:12%; top:78%; --dur:11s; --delay:2s">✦</span>
+<span class="rune" style="left:82%; top:72%; --dur:8s;  --delay:1s">☀</span>
+<span class="rune" style="left:90%; top:82%; --dur:13s; --delay:3s">☾</span>
+<span class="rune" style="left:48%; top:88%; --dur:10s; --delay:0.5s">✧</span>
+<span class="rune" style="left:2%;  top:28%; --dur:12s; --delay:4s">⋆</span>
+<span class="rune" style="left:93%; top:38%; --dur:9s;  --delay:1.5s">✦</span>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="https://amber-konstanze-74.tiiny.site/cartomante_presentazione.html">✦ Chi Sono</a>
+  <a href="https://amber-konstanze-74.tiiny.site/pietre_cristalloterapia.html">💎 Pietre & Cristalli</a>
+  <a href="https://amber-konstanze-74.tiiny.site/lune_nuove.html" class="active">🌑 Lune Nuove</a>
+</nav>
+
+<!-- HEADER -->
+<header class="header">
+  <p class="subtitle">✦ &nbsp; Ester Miriam &nbsp;·&nbsp; Astrologia &nbsp; ✦</p>
+  <h1>I Luminari & le Lune Nuove</h1>
+  <div class="divider">🌑</div>
+</header>
+
+<!-- LUMINARI -->
+<section class="luminari">
+  <div class="luminare-card">
+    <span class="luminare-icon">☀️</span>
+    <h2>Il Sole</h2>
+    <p class="tag">Il Principio Maschile</p>
+    <p>Il Sole rappresenta il nostro <strong>emisfero destro</strong>, la mente razionale, la volontà, l'identità conscia e il principio maschile che agisce nel mondo.</p>
+  </div>
+  <div class="luminare-card">
+    <span class="luminare-icon">🌙</span>
+    <h2>La Luna</h2>
+    <p class="tag">Il Principio Femminile</p>
+    <p>La Luna esprime il nostro <strong>emisfero sinistro</strong>, l'intuizione, le emozioni profonde, il mondo interiore e il principio femminile che nutre e riceve.</p>
+  </div>
+</section>
+
+<!-- MAIN TEXT -->
+<section class="main-section">
+  <div class="text-box">
+    <h2>La Congiunzione dei Due Astri</h2>
+    <p class="quote">
+      "Nel momento in cui i due astri si congiungono, nelle Lune Nuove avviene<br>
+      una sorta di fusione di questi due mondi."
+    </p>
+    <p>
+      I nostri due <strong>luminari — il Sole e la Luna</strong> — rappresentano rispettivamente il nostro maschile e il nostro femminile, l'emisfero destro e l'emisfero sinistro del nostro cervello.
+    </p>
+    <p>
+      Il <strong>grado zodiacale</strong> in cui si congiungono attiva nell'essere umano esperienze specifiche legate a quel grado. Ogni Luna Nuova è quindi un portale unico, un momento di semina interiore che porta con sé il seme di nuove possibilità.
+    </p>
+    <p>
+      È inoltre importante, per una corretta interpretazione, comprendere se il punto in cui avviene questa <strong>lunazione sarà in aspetto con i pianeti del tema natale</strong> e in quale <strong>casa zodiacale</strong> cadrà nel tema di ognuno — perché è lì che la Luna Nuova porterà il suo influsso trasformativo.
+    </p>
+  </div>
+</section>
+
+<!-- KEY POINTS -->
+<section class="key-points">
+  <div class="points-grid">
+    <div class="point">
+      <span class="point-icon">♈</span>
+      <h3>Il Grado Zodiacale</h3>
+      <p>Ogni congiunzione avviene in un grado specifico dello zodiaco, attivando temi ed esperienze precise.</p>
+    </div>
+    <div class="point">
+      <span class="point-icon">🏠</span>
+      <h3>La Casa Zodiacale</h3>
+      <p>La casa in cui cade la Luna Nuova nel tuo tema natale indica l'area della vita che sarà illuminata.</p>
+    </div>
+    <div class="point">
+      <span class="point-icon">⚡</span>
+      <h3>Gli Aspetti Planetari</h3>
+      <p>Gli aspetti con i pianeti natali determinano come e con quale intensità la lunazione influirà su di te.</p>
+    </div>
+    <div class="point">
+      <span class="point-icon">🌑</span>
+      <h3>La Fusione Interiore</h3>
+      <p>La Luna Nuova è il momento ideale per integrare maschile e femminile e seminare nuove intenzioni.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <p>Vuoi scoprire come la prossima Luna Nuova influenzerà il tuo tema natale?</p>
+  <a href="#" class="cta-btn">🌑 Richiedi una Lettura con Ester Miriam</a>
+</div>
+
+<!-- AUDIO -->
+<div id="audioBtn" onclick="toggleAudio()" title="Musica mistica">🔊</div>
+
+<script>
+const canvas = document.getElementById('bgCanvas');
+const ctx = canvas.getContext('2d');
+let W, H, stars = [], shootingStars = [];
+function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+function initStars() {
+  stars = [];
+  for (let i = 0; i < 230; i++) {
+    stars.push({ x: Math.random()*W, y: Math.random()*H, r: Math.random()*1.4+0.2,
+      twinkle: Math.random()*Math.PI*2, da: (Math.random()-0.5)*0.007 });
+  }
+}
+function spawnShooter() {
+  shootingStars.push({ x: Math.random()*W*0.7, y: Math.random()*H*0.4,
+    len: Math.random()*130+60, speed: Math.random()*6+4, a: 1, angle: Math.PI/5 });
+}
+function draw() {
+  const bg = ctx.createLinearGradient(0,0,0,H);
+  bg.addColorStop(0,'#f5ebb0'); bg.addColorStop(0.4,'#f0e6a0'); bg.addColorStop(1,'#e8d880');
+  ctx.fillStyle = bg; ctx.fillRect(0,0,W,H);
+  const neb = ctx.createRadialGradient(W*0.5,H*0.3,0,W*0.5,H*0.3,W*0.55);
+  neb.addColorStop(0,'rgba(180,140,20,0.10)'); neb.addColorStop(1,'transparent');
+  ctx.fillStyle = neb; ctx.fillRect(0,0,W,H);
+  stars.forEach(s => {
+    s.twinkle += s.da;
+    const alpha = 0.35 + 0.55*(Math.sin(s.twinkle)*0.5+0.5);
+    ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    ctx.fillStyle = `rgba(139,100,20,${alpha})`; ctx.fill();
+  });
+  shootingStars = shootingStars.filter(ss => ss.a > 0.02);
+  shootingStars.forEach(ss => {
+    ctx.save(); ctx.globalAlpha = ss.a;
+    const grad = ctx.createLinearGradient(ss.x,ss.y,ss.x-Math.cos(ss.angle)*ss.len,ss.y-Math.sin(ss.angle)*ss.len);
+    grad.addColorStop(0,'rgba(139,100,20,0.9)'); grad.addColorStop(1,'rgba(139,100,20,0)');
+    ctx.strokeStyle = grad; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(ss.x,ss.y);
+    ctx.lineTo(ss.x-Math.cos(ss.angle)*ss.len, ss.y-Math.sin(ss.angle)*ss.len);
+    ctx.stroke(); ctx.restore();
+    ss.x += Math.cos(ss.angle)*ss.speed; ss.y += Math.sin(ss.angle)*ss.speed; ss.a *= 0.96;
+  });
+  requestAnimationFrame(draw);
+}
+window.addEventListener('resize', () => { resize(); initStars(); });
+resize(); initStars(); draw();
+setInterval(spawnShooter, 3000); setTimeout(spawnShooter, 1500);
+
+const MUSIC_URL = "https://cdn.pixabay.com/audio/2022/10/16/audio_b923571947.mp3";
+const audio = new Audio(MUSIC_URL);
+audio.loop = true; audio.volume = 0.45;
+let playing = false;
+const btn = document.getElementById('audioBtn');
+function toggleAudio() {
+  if (!playing) {
+    audio.play().then(() => { playing = true; btn.textContent = '🔇'; btn.style.boxShadow = '0 0 28px 10px rgba(139,100,20,0.5)'; }).catch(() => { btn.textContent = '⚠️'; });
+  } else { audio.pause(); playing = false; btn.textContent = '🔊'; btn.style.boxShadow = '0 0 18px 4px rgba(139,100,20,0.3)'; }
+}
+window.addEventListener('click', function startOnce() { if (!playing) toggleAudio(); window.removeEventListener('click', startOnce); }, { once: true });
+</script>
+</body>
+</html>

@@ -1,0 +1,2466 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I 360 Gradi Sabiani – Ester Miriam</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --gold: #8B6914;
+  --gold-light: #5c3d00;
+  --bg: #f0e6a0;
+  --text: #3d2b00;
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Cormorant Garamond', serif;
+  min-height: 100vh;
+}
+
+/* NAV TOP */
+.top-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(240,230,160,0.97);
+  border-bottom: 1px solid rgba(139,105,20,0.3);
+  padding: 10px 16px;
+  display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;
+}
+.top-nav a {
+  font-style: italic; font-size: 0.72rem;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  text-decoration: none; opacity: 0.8; transition: opacity 0.2s;
+  font-family: 'Cormorant Garamond', serif;
+}
+.top-nav a:hover { opacity: 1; }
+
+/* PAGE NAV */
+.page-nav {
+  display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+  padding: 14px 20px 0; position: relative; z-index: 10;
+}
+.page-nav a {
+  font-style: italic; font-size: 0.72rem;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold); text-decoration: none; opacity: 0.8;
+}
+
+/* HEADER */
+.header {
+  text-align: center; padding: 30px 20px 20px;
+}
+.header .subtitle {
+  font-style: italic; font-size: 0.78rem;
+  letter-spacing: 0.38em; color: var(--gold);
+  text-transform: uppercase; opacity: 0.85; margin-bottom: 10px;
+}
+.header h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.3rem, 4vw, 2rem);
+  color: var(--gold-light);
+  margin-bottom: 8px;
+}
+.header p {
+  font-style: italic; font-size: 1rem;
+  color: rgba(61,43,0,0.75); max-width: 580px; margin: 0 auto; line-height: 1.8;
+}
+.divider {
+  display: flex; align-items: center; gap: 12px;
+  color: var(--gold); font-size: 0.9rem; opacity: 0.65;
+  margin: 12px auto; justify-content: center; width: fit-content;
+}
+.divider::before, .divider::after {
+  content: ''; height: 1px; width: 60px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+/* SIGN PILLS NAV */
+.sign-nav {
+  display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+  padding: 16px 20px; max-width: 800px; margin: 0 auto;
+}
+.nav-pill {
+  font-size: 0.75rem; font-style: italic;
+  letter-spacing: 0.15em; padding: 5px 12px;
+  border: 1.5px solid; border-radius: 20px;
+  text-decoration: none; transition: all 0.2s;
+  font-family: 'Cormorant Garamond', serif;
+  opacity: 0.8;
+}
+.nav-pill:hover { opacity: 1; background: rgba(0,0,0,0.05); }
+
+/* CONTENT */
+.content {
+  max-width: 900px; margin: 0 auto; padding: 0 16px 60px;
+}
+
+/* SIGN SECTION */
+.sign-section { margin-bottom: 40px; }
+.sign-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.2rem; padding: 10px 0;
+  border-bottom: 2px solid; margin-bottom: 16px;
+  letter-spacing: 0.08em;
+}
+
+/* DEGREES GRID */
+.degrees-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+/* DEGREE CARD */
+.degree-card {
+  background: rgba(220,175,80,0.45);
+  border: 1px solid rgba(150,100,10,0.35);
+  border-radius: 10px; padding: 14px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.degree-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(139,100,20,0.2);
+  background: rgba(220,175,80,0.65);
+}
+.degree-num {
+  display: inline-block;
+  color: white; font-size: 0.72rem;
+  font-weight: bold; padding: 2px 8px;
+  border-radius: 10px; margin-bottom: 8px;
+  letter-spacing: 0.1em;
+}
+.degree-symbol {
+  font-size: 0.88rem; font-weight: 600;
+  color: var(--gold-light); margin-bottom: 6px;
+  line-height: 1.4; font-style: italic;
+}
+.degree-meaning {
+  font-size: 0.82rem; color: rgba(61,43,0,0.82);
+  line-height: 1.6;
+}
+
+/* AUDIO */
+#audioBtn {
+  position: fixed; bottom: 24px; right: 24px; z-index: 100;
+  width: 52px; height: 52px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #d4b840, #a08010);
+  border: 1.5px solid #8B6914;
+  box-shadow: 0 0 18px 4px rgba(139,100,20,0.3);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 1.4rem;
+}
+
+/* SEARCH */
+.search-bar {
+  display: flex; justify-content: center; padding: 10px 20px 20px;
+}
+.search-input {
+  width: 100%; max-width: 500px;
+  padding: 10px 16px; border-radius: 25px;
+  border: 1.5px solid rgba(139,100,20,0.5);
+  background: rgba(255,245,200,0.7);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; color: var(--text);
+  outline: none;
+}
+.search-input:focus { border-color: var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- STICKY TOP NAV -->
+<div class="top-nav">
+  <a href="https://amber-konstanze-74.tiiny.site/cartomante_presentazione.html" style="color:#8B6914;">✦ Chi Sono</a>
+  <a href="https://amber-konstanze-74.tiiny.site/pietre_cristalloterapia.html" style="color:#8B6914;">💎 Pietre</a>
+  <a href="https://amber-konstanze-74.tiiny.site/lune_nuove.html" style="color:#8B6914;">🌑 Lune Nuove</a>
+  <a href="https://amber-konstanze-74.tiiny.site/gradi_sabiani.html" style="color:#8B6914; opacity:1; font-weight:bold;">🔮 Gradi Sabiani</a>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <p class="subtitle">✦ &nbsp; Ester Miriam &nbsp;·&nbsp; Astrologia &nbsp; ✦</p>
+  <h1>I 360 Gradi Sabiani</h1>
+  <div class="divider">🔮</div>
+  <p>
+    Un sistema di 360 immagini simboliche collegate a ciascun grado dello Zodiaco,<br>
+    canale di visioni della sensitiva <em>Elsie Wheeler</em> e dell'astrologo <em>Marc Edmund Jones</em>,<br>
+    interpretati da <em>Dane Rudhyar</em> in chiave evolutiva e transpersonale.
+  </p>
+</header>
+
+<!-- SEARCH -->
+<div class="search-bar">
+  <input class="search-input" type="text" id="searchInput" placeholder="🔍 Cerca per segno o parola chiave..." oninput="filterCards()">
+</div>
+
+<!-- SIGN NAV PILLS -->
+<nav class="sign-nav">
+  <a href="#ariete" class="nav-pill" style="border-color:#c0392b; color:#c0392b;">ARIETE ♈</a>
+<a href="#toro" class="nav-pill" style="border-color:#27ae60; color:#27ae60;">TORO ♉</a>
+<a href="#gemelli" class="nav-pill" style="border-color:#f39c12; color:#f39c12;">GEMELLI ♊</a>
+<a href="#cancro" class="nav-pill" style="border-color:#2980b9; color:#2980b9;">CANCRO ♋</a>
+<a href="#leone" class="nav-pill" style="border-color:#e67e22; color:#e67e22;">LEONE ♌</a>
+<a href="#vergine" class="nav-pill" style="border-color:#8e44ad; color:#8e44ad;">VERGINE ♍</a>
+<a href="#bilancia" class="nav-pill" style="border-color:#16a085; color:#16a085;">BILANCIA ♎</a>
+<a href="#scorpione" class="nav-pill" style="border-color:#c0392b; color:#c0392b;">SCORPIONE ♏</a>
+<a href="#sagittario" class="nav-pill" style="border-color:#d35400; color:#d35400;">SAGITTARIO ♐</a>
+<a href="#capricorno" class="nav-pill" style="border-color:#2c3e50; color:#2c3e50;">CAPRICORNO ♑</a>
+<a href="#acquario" class="nav-pill" style="border-color:#2980b9; color:#2980b9;">ACQUARIO ♒</a>
+<a href="#pesci" class="nav-pill" style="border-color:#8e44ad; color:#8e44ad;">PESCI ♓</a>
+
+</nav>
+
+<!-- CONTENT -->
+<div class="content" id="mainContent">
+  
+    <div class="sign-section" id="ariete">
+      <h2 class="sign-title" style="border-color:#c0392b; color:#c0392b;">ARIETE ♈</h2>
+      <div class="degrees-grid">
+    
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">1°</div>
+          <div class="degree-symbol">UNA DONNA EMERGE DALL'OCEANO. UNA FOCA L'ABBRACCIA</div>
+          <div class="degree-meaning">Emergere di forme nuove e della coscienza individuale; ma il passato collettivo detiene ancora una grande forza.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">2°</div>
+          <div class="degree-symbol">UN COMICO RIVELA MEDIANTE I SUOI SCHERZI I TRATTI DELLA NATURA UMANA</div>
+          <div class="degree-meaning">Capacità di guardarsi oggettivamente e di intraprendere un'autocritica. Senso dell'umorismo e dei contrasti.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">3°</div>
+          <div class="degree-symbol">IL PROFILO DI UN UOMO INTAGLIATO IN UN CAMMEO EVOCA LA FORMA GEOGRAFICA DEL SUO PAESE</div>
+          <div class="degree-meaning">Identificandosi col proprio gruppo etnico, possibilità di divenire un pioniere della propria comunità.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">4°</div>
+          <div class="degree-symbol">DUE INNAMORATI CAMMINANO LENTAMENTE SU UN SENTIERO APPARTATO</div>
+          <div class="degree-meaning">Polarizzazione progressive delle energie necessarie al perfetto funzionamento del proprio essere e del proprio destino.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">5°</div>
+          <div class="degree-symbol">UN TRIANGOLO CUI SONO ATTACCATE DELLE ALI</div>
+          <div class="degree-meaning">Possibilità evidente di un'evoluzione nella propria spiritualità. Aspirazioni alle alte vette della coscienza.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">6°</div>
+          <div class="degree-symbol">UN QUADRATO: UNO DEI SUOI LATI È ILLUMINATO BRILLANTEMENTE</div>
+          <div class="degree-meaning">Sforzo primordiale verso la differenziazione individuale, soprattutto sul piano delle emozioni. Stabilizzazione del carattere.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">7°</div>
+          <div class="degree-symbol">UN UOMO SI ESPRIME SIMULTANEAMENTE IN DUE CAMPI DIFFERENTI CON GRANDE SUCCESSO</div>
+          <div class="degree-meaning">Tendenza a manifestare le energie creative su due piani di attività. Una doppia via dà indipendenza alle forze dello spirito.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">8°</div>
+          <div class="degree-symbol">UN LARGO CAPPELLO DA DONNA DAI LUNGHI NASTRI MOSSI DAL VENTO DELL'EST</div>
+          <div class="degree-meaning">Presenza di forze superiori che proteggono e dirigono l'evoluzione di tutto l'essere cosciente di se stesso.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">9°</div>
+          <div class="degree-symbol">UN VEGGENTE CONCENTRA LO SGUARDO SU UNA SFERA DI CRISTALLO</div>
+          <div class="degree-meaning">Acquisizione di una vista d'insieme su tutti gli avvenimenti, iscrivendoli in un tutto organico e significativo.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">10°</div>
+          <div class="degree-symbol">UN EDUCATORE PRESENTA IMMAGINI TRADIZIONALI SOTTO UNA NUOVA FORMA SIMBOLICA</div>
+          <div class="degree-meaning">Capacità di dare una forma nuova alle tradizioni antiquate del proprio ambiente. Insegnamento creativo.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">11°</div>
+          <div class="degree-symbol">IL SOVRANO DI UNA NAZIONE</div>
+          <div class="degree-meaning">Potenza accentratrice dei grandi simboli che reggono la vita delle collettività. Potere esecutivo.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">12°</div>
+          <div class="degree-symbol">UN VOLO DI OCHE SELVATICHE DISEGNA UN TRIANGOLO</div>
+          <div class="degree-meaning">Spirito sottomesso alla visione forse troppo idealistica dell'ordine universale. Necessità di praticità e precisione.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">13°</div>
+          <div class="degree-symbol">UNA BOMBA DISINNESCATA INDICA LO SCACCO DI UN MOVIMENTO RIVOLUZIONARIO</div>
+          <div class="degree-meaning">Un desiderio prematuro di effettuare un cambiamento radicale che le circostanze non giustificano ancora.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">14°</div>
+          <div class="degree-symbol">UN SERPENTE SI ATTORCIGLIA INTORNO A UNA COPPIA ABBRACCIATA</div>
+          <div class="degree-meaning">La profonda importanza di dare un senso rituale ai rapporti intimi. Evocazione di un amore trascendente.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">15°</div>
+          <div class="degree-symbol">UN PELLEROSSA TINGE UN ABITO DA CERIMONIA</div>
+          <div class="degree-meaning">Allargamento della coscienza personale mediante un'azione produttiva basata su una cultura tradizionale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">16°</div>
+          <div class="degree-symbol">DEGLI SPIRITI DELLA NATURA GIOCANO SOTTO LA LUCE DI UN BEL TRAMONTO</div>
+          <div class="degree-meaning">Possibilità di coltivare poteri trascendenti polarizzando l'attenuazione delle forze vitali. Apertura alle forze spirituali.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">17°</div>
+          <div class="degree-symbol">DUE DONNE NUBILI SIEDONO IN SILENZIO</div>
+          <div class="degree-meaning">Ritorno delle forze vitali su se stesse. Rassegnazione calma e dignitosa al proprio destino.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">18°</div>
+          <div class="degree-symbol">UN'AMACA VUOTA FRA DUE ALBERI</div>
+          <div class="degree-meaning">Necessità di alternare periodi di attività e di riposo, e di un ritmo nell'esistenza.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">19°</div>
+          <div class="degree-symbol">UN TAPPETO VOLANTE ONDEGGIA NELL'ARIA</div>
+          <div class="degree-meaning">Importanza dell'immaginazione creativa e di una visione delle cose che trascende la vita quotidiana.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">20°</div>
+          <div class="degree-symbol">IN UN GIORNO D'INVERNO UNA RAGAZZA GETTA BRICIOLE AGLI UCCELLI</div>
+          <div class="degree-meaning">Necessità di trattenere i valori spirituali durante un periodo d'inerzia mentale o di crisi emozionale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">21°</div>
+          <div class="degree-symbol">UN PUGILE SALE SUL RING</div>
+          <div class="degree-meaning">Glorificazione dell'aggressività sociale quando questa sia il canale imposto dalla cultura.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">22°</div>
+          <div class="degree-symbol">L'ENTRATA IN UN GIARDINO MAGICO IN CUI OGNI DESIDERIO È SODDISFATTO</div>
+          <div class="degree-meaning">Abbondanza resa possibile dalla cooperazione di tutti gli esseri e la spinta dei valori sociali e spirituali.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">23°</div>
+          <div class="degree-symbol">UNA DONNA INCINTA CON ABITI ESTIVI</div>
+          <div class="degree-meaning">Simbolo di fecondità e di fruttificazione. Produttività grazie all'integrazione dell'individuo nella collettività.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">24°</div>
+          <div class="degree-symbol">LA TENDA DI UNA FINESTRA APERTA PRENDE LA FORMA DI UNA CORNUCOPIA</div>
+          <div class="degree-meaning">Irruzione delle forze spirituali nello spirito, pronto a consacrarsi a una vita transpersonale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">25°</div>
+          <div class="degree-symbol">UNA PERSONA COSCIENTE DELLA POSSIBILITÀ DI UN'ESPERIENZA CHE SUPERA I LIVELLI UMANI</div>
+          <div class="degree-meaning">La caratteristica essenziale dell'essere umano è quella di poter agire su due piani di esistenza differenti.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">26°</div>
+          <div class="degree-symbol">UNA PERSONA CHE POSSIEDE PIÙ DONI DI QUANTI NE POSSA REALIZZARE</div>
+          <div class="degree-meaning">Necessità di procedere gradualmente nello sviluppo di facoltà supernormali, senza confondere il potenziale con l'attuale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">27°</div>
+          <div class="degree-symbol">UN'IMMAGINAZIONE CREATIVA PERMETTE DI RIGUADAGNARE UN'OPPORTUNITÀ PERDUTA</div>
+          <div class="degree-meaning">Si può sempre ricominciare, ma bisogna prima avere la forza di immaginare chiaramente la meta.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">28°</div>
+          <div class="degree-symbol">UNA GRANDE FOLLA VITUPERA UN MUSICISTA CHE L'HA DELUSA</div>
+          <div class="degree-meaning">La necessità di assumere la piena responsabilità di tutto ciò che si fa, perché tutte le azioni hanno conseguenze sociali.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">29°</div>
+          <div class="degree-symbol">LA MUSICA DELLE SFERE CELESTI</div>
+          <div class="degree-meaning">Ogni essere che agisce gioca un ruolo nell'armonia dell'universo. Il proprio destino essenziale controlla i desideri personali.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">30°</div>
+          <div class="degree-symbol">UNO STAGNO CON LE ANATRE</div>
+          <div class="degree-meaning">La necessità di prendere coscienza di ciò che ci limita e, così facendo, di ciò che ci definisce come campo d'azione particolare.</div>
+        </div>
+        </div></div>
+
+    <div class="sign-section" id="toro">
+      <h2 class="sign-title" style="border-color:#27ae60; color:#27ae60;">TORO ♉</h2>
+      <div class="degrees-grid">
+    
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">1°</div>
+          <div class="degree-symbol">UN RUSCELLO DI MONTAGNA, CHIARO E PURO</div>
+          <div class="degree-meaning">Una natura che si manifesta in ciò che essa ha di più essenziale e caratteristico — il suo destino, o dharma.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">2°</div>
+          <div class="degree-symbol">UN TEMPORALE E I SUOI LAMPI SPETTACOLARI</div>
+          <div class="degree-meaning">La discesa di forze cosmiche capaci di fecondare o distruggere. Un'apparizione soprannaturale trasformatrice.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">3°</div>
+          <div class="degree-symbol">UNA SCALA SASSOSA CONDUCE A UN CAMPO DI TRIFOGLIO IN FIORE</div>
+          <div class="degree-meaning">Sono necessari degli sforzi per guadagnare il livello di coscienza in cui fiorisca la natura essenziale dell'essere.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">4°</div>
+          <div class="degree-symbol">LA PENTOLA D'ORO AI PIEDI DELL'ARCOBALENO</div>
+          <div class="degree-meaning">L'arcobaleno simboleggia l'Alleanza fra Dio e l'uomo. Il contatto con il divino è reale ma intangibile.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">5°</div>
+          <div class="degree-symbol">UNA VEDOVA SI CHINA SU UNA TOMBA ANCORA APERTA</div>
+          <div class="degree-meaning">L'importanza fondamentale del modo con cui ci si stacca dal passato, o se ne resta prigionieri.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">6°</div>
+          <div class="degree-symbol">UN PONTE SOSPESO AL DI SOPRA DI UNA GOLA ABISSALE</div>
+          <div class="degree-meaning">La possibilità di vincere per mezzo dell'intelligenza tutti gli ostacoli che separano i gruppi e le culture umane.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">7°</div>
+          <div class="degree-symbol">LA SAMARITANA INCONTRA GESÙ PRESSO IL POZZO ANCESTRALE</div>
+          <div class="degree-meaning">L'incontro fra il passato e la manifestazione di un futuro misterioso. Rapporto fra tradizione e trasformazione.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">8°</div>
+          <div class="degree-symbol">UNA SLITTA SU UN SUOLO ANCORA VERGINE DI NEVE</div>
+          <div class="degree-meaning">L'importanza di prepararsi a esperienze future grazie a un'anticipazione concreta ed efficace.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">9°</div>
+          <div class="degree-symbol">UN ALBERO DI NATALE INTERAMENTE DECORATO</div>
+          <div class="degree-meaning">Il ritorno tradizionale alle radici famigliari in uno spirito di gioia e di buona volontà.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">10°</div>
+          <div class="degree-symbol">UN'INFERMIERA DELLA CROCE ROSSA</div>
+          <div class="degree-meaning">Fraternità utile durante le tragedie collettive. Compassione che polarizza l'odio.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">11°</div>
+          <div class="degree-symbol">UNA DONNA CHE ANNAFFIA I FIORI DEL SUO GIARDINO</div>
+          <div class="degree-meaning">La necessità di coltivare assiduamente le facoltà mentali e spirituali.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">12°</div>
+          <div class="degree-symbol">UNA GIOVANE COPPIA AFFASCINATA DALLE VETRINE DI UN GRANDE MAGAZZINO</div>
+          <div class="degree-meaning">I desideri di un Io immaturo che cerca di mettersi al livello dell'élite intellettuale del proprio ambiente.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">13°</div>
+          <div class="degree-symbol">UN FACCHINO CARICO DI PESANTI BAGAGLI</div>
+          <div class="degree-meaning">L'importanza di riempire la funzione sociale che dà il proprio valore all'esistenza personale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">14°</div>
+          <div class="degree-symbol">GIOCHI DI BAMBINI SU UNA SPIAGGIA: DEI GRANCHI SI MUOVONO IN RIVA ALL'ACQUA</div>
+          <div class="degree-meaning">Vivere e lasciar vivere: ciascuna categoria di esseri ha il proprio luogo nell'evoluzione.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">15°</div>
+          <div class="degree-symbol">UN UOMO SFIDA UNA TEMPESTA DI NEVE</div>
+          <div class="degree-meaning">Il coraggio e l'audacia necessari per superare una crisi resa pericolosa dall'ambizione sociale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">16°</div>
+          <div class="degree-symbol">UN ANZIANO EDUCATORE SI SFORZA DI INTERESSARE I SUOI ALLIEVI A IDEE TRADIZIONALI</div>
+          <div class="degree-meaning">L'insufficienza di un sapere tradizionale ma superato per fare fronte a condizioni di vita nuova.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">17°</div>
+          <div class="degree-symbol">UN COMBATTIMENTO SIMBOLICO FRA SCIABOLE E TORCE</div>
+          <div class="degree-meaning">Necessità di prendere coscienza dell'opposizione inevitabile fra le forze cosmiche o psichiche.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">18°</div>
+          <div class="degree-symbol">UNA MASSAIA SCUOTE DALLA FINESTRA UN SACCO PIENO DI POLVERE</div>
+          <div class="degree-meaning">Necessità di purificare il proprio sé dalle conseguenze di un'attività disarmonica o troppo attaccata alla materia.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">19°</div>
+          <div class="degree-symbol">UN CONTINENTE NUOVO EMERGE DALL'ACQUA</div>
+          <div class="degree-meaning">Di fronte a possibilità del tutto nuove, si pone sempre la domanda: cosa ne faremo?</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">20°</div>
+          <div class="degree-symbol">NUVOLE LEGGERE A FORMA DI ALI IN UN CIELO CHIARO</div>
+          <div class="degree-meaning">Delle forze spirituali operano in noi; saremo in grado di comprenderle, restando aperti?</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">21°</div>
+          <div class="degree-symbol">UN DITO PUNTATO SU UN RIGO DELLA PAGINA A CUI UN LIBRO È APERTO</div>
+          <div class="degree-meaning">L'importanza di prestare grande attenzione ai segni che possono essere messaggi che indichino una via.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">22°</div>
+          <div class="degree-symbol">UNA COLOMBA BIANCA SORVOLA UN LAGO AGITATO DALLA TEMPESTA</div>
+          <div class="degree-meaning">Ispirazione spirituale che ci potrebbe condurre alla salvezza, se la nostra fede è viva e pura.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">23°</div>
+          <div class="degree-symbol">UNA GIOIELLERIA PIENA DI RARI GIOIELLI</div>
+          <div class="degree-meaning">La conferma data dalla società a coloro che coltivano alla perfezione i propri valori.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">24°</div>
+          <div class="degree-symbol">UN GUERRIERO PELLEROSSA A CAVALLO</div>
+          <div class="degree-meaning">Aggressività violenta, forse necessaria per sopravvivere, ma fattore di reazioni deprimenti.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">25°</div>
+          <div class="degree-symbol">UN GRANDE PARCO APERTO AL PUBBLICO</div>
+          <div class="degree-meaning">L'addomesticamento delle energie selvagge della natura messe al servizio di una comunità.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">26°</div>
+          <div class="degree-symbol">UN GIOVANE SPAGNOLO FA LA SERENATA ALLA SUA AMATA</div>
+          <div class="degree-meaning">L'importanza di dare alle emozioni una forma rituale mantenendoli dentro un ordine collettivo.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">27°</div>
+          <div class="degree-symbol">UNA VECCHIA PELLEROSSA VENDE OGGETTI DI ARTIGIANATO DEL SUO VILLAGGIO</div>
+          <div class="degree-meaning">Il sostegno che le forme di una vecchia cultura danno a coloro che in essa sono radicati.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">28°</div>
+          <div class="degree-symbol">UNA DONNA SULLA CINQUANTINA COMMOSSA DA UN NUOVO AMORE</div>
+          <div class="degree-meaning">La possibilità per ciascun essere umano di liberarsi dei limiti biologici e di cambiare la propria vita.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">29°</div>
+          <div class="degree-symbol">DUE CALZOLAI AL LAVORO AL MEDESIMO TAVOLO</div>
+          <div class="degree-meaning">Tutto può essere visto da due punti di vista intellettuali. La calzatura simboleggia il sostegno alla nostra evoluzione.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#27ae60;">30°</div>
+          <div class="degree-symbol">UN PAVONE FA LA RUOTA SULLA TERRAZZA DI UN CASTELLO</div>
+          <div class="degree-meaning">Il coronamento di una stirpe di sforzi ancestrali nell'opera o nella personalità di un individuo moderno.</div>
+        </div>
+        </div></div>
+
+    <div class="sign-section" id="gemelli">
+      <h2 class="sign-title" style="border-color:#f39c12; color:#f39c12;">GEMELLI ♊</h2>
+      <div class="degrees-grid">
+    
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">1°</div>
+          <div class="degree-symbol">IL FONDO DI VETRO DI UNA BARCA PERMETTE DI CONTEMPLARE LE MERAVIGLIE DELLA VITA SOTTOMARINA</div>
+          <div class="degree-meaning">La scoperta di una dimensione nuova del reale all'interno di un campo psichico. La Meditazione e i suoi possibili risultati.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">2°</div>
+          <div class="degree-symbol">BABBO NATALE RIEMPIE DI REGALI LE CALZE DEI BAMBINI</div>
+          <div class="degree-meaning">L'importanza di considerare in modo semplice e puro la possibilità di comunicare con il divino.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">3°</div>
+          <div class="degree-symbol">I GIARDINI DELLE TUILERIES</div>
+          <div class="degree-meaning">Il matrimonio necessario delle forze vitali e della ragione sotto lo stimolo di una cultura solida e bella.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">4°</div>
+          <div class="degree-symbol">UNA GHIRLANDA DI AGRIFOGLIO E DI VISCHIO FA RIVIVERE IL RICORDO DEL NATALE</div>
+          <div class="degree-meaning">La nostalgia del passato e la vaghezza pericolosa di un ritorno al passato di fronte a difficoltà.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">5°</div>
+          <div class="degree-symbol">UNA RIVISTA PREDICA L'ATTIVISMO RIVOLUZIONARIO</div>
+          <div class="degree-meaning">La pressione esplosiva di emozioni troppo contenute si trasforma in idee sovversive.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">6°</div>
+          <div class="degree-symbol">OPERAI SU UNA PIATTAFORMA DI TRIVELLAZIONE</div>
+          <div class="degree-meaning">Lo sforzo e la concentrazione necessaria per far uso delle risorse psichiche a lungo sepolte nell'inconscio collettivo.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">7°</div>
+          <div class="degree-symbol">UN POZZO CIRCONDATO DA ALBERI MAESTOSI</div>
+          <div class="degree-meaning">Il ritorno alle fonti vitali ancora aperte e disponibili alla comunità degli uomini.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">8°</div>
+          <div class="degree-symbol">OPERAI IN SCIOPERO CHE OCCUPANO LE LORO FABBRICHE</div>
+          <div class="degree-meaning">Una giusta rivolta contro i privilegi, suscettibile di sconvolgere delle funzioni sociali.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">9°</div>
+          <div class="degree-symbol">UNA FARETRA PIENA DI FRECCE</div>
+          <div class="degree-meaning">Attività mentale che sonda le difficoltà interiori e scalza gli ostacoli esteriori. Volontà di conquista.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">10°</div>
+          <div class="degree-symbol">UN AEREO IN PICCHIATA</div>
+          <div class="degree-meaning">L'uomo superiore che sfida la natura e le sue leggi. Il potere dello stato mentale sulla materia.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">11°</div>
+          <div class="degree-symbol">UN TERRENO VERGINE RECENTEMENTE DISSODATO DIVENTA DISPONIBILE PER LA COSTRUZIONE</div>
+          <div class="degree-meaning">Le opportunità che si presentano senza sosta allo spirito, e la volontà di coloro che cercano un'attività nuova.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">12°</div>
+          <div class="degree-symbol">UNA GIOVANE DONNA LOTTA PER I SUOI DIRITTI CIVILI</div>
+          <div class="degree-meaning">La necessità di rifiutare e superare ciò che resta di un passato nefasto. Volontà di indipendenza.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">13°</div>
+          <div class="degree-symbol">UNA GRANDE PIANISTA INCANTA IL SUO UDITORIO</div>
+          <div class="degree-meaning">Il potere di ispirare e commuovere le masse. Il pericolo psicologico di un successo eccezionale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">14°</div>
+          <div class="degree-symbol">DUE PERSONE IN COMUNICAZIONE TELEPATICA</div>
+          <div class="degree-meaning">La capacità latente di ciascun essere umano di trionfare sulla distanza e sul tempo che dividono ciò che è essenzialmente uno.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">15°</div>
+          <div class="degree-symbol">DUE BAMBINI OLANDESI SI SCAMBIANO LE LORO OPINIONI</div>
+          <div class="degree-meaning">Il valore che si deve attribuire alla discussione libera e spontanea delle idee, e a un pensiero chiaro e razionale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">16°</div>
+          <div class="degree-symbol">UN ATTIVISTA LANCIA UN APPELLO FERVENTE ALL'AZIONE SOCIALE</div>
+          <div class="degree-meaning">Il potere di mobilitare la folla. Le passioni scatenate a opera di uno spirito che le domina.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">17°</div>
+          <div class="degree-symbol">UN BEL VISO ADOLESCENTE SI TRASFORMA, RIVELANDO UNA GRANDE MATURITÀ</div>
+          <div class="degree-meaning">La possibilità di una metamorfosi interiore, in cui la possanza fisica si trasforma in potere mentale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">18°</div>
+          <div class="degree-symbol">DUE CINESI IMMIGRATI CONVERSANO NELLA LORO LINGUA NATALE</div>
+          <div class="degree-meaning">La grande forza delle origini psicologiche. La possibilità di restare indipendenti dall'ambiente sociale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">19°</div>
+          <div class="degree-symbol">UN MANOSCRITTO MOLTO ANTICO, RICCO DI SAGGEZZA</div>
+          <div class="degree-meaning">L'importanza delle idee-seme che creano le basi di tutta la cultura, e la necessità di riferirvisi costantemente.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">20°</div>
+          <div class="degree-symbol">UN RISTORANTE CHE OFFRE NUMEROSI PIATTI REGIONALI</div>
+          <div class="degree-meaning">La sintesi possibile dei prodotti dello spirito derivati da diverse culture.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">21°</div>
+          <div class="degree-symbol">UNA FOLLA DI LAVORATORI RIVENDICA IN MODO TUMULTUOSO CIÒCHE SEMBRA LORO DOVUTO</div>
+          <div class="degree-meaning">Il pericolo di essere abituati all'abbondanza e alle idee egualitarie che contrarino l'equilibrio dell'esistenza.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">22°</div>
+          <div class="degree-symbol">LA FESTA DELLA VENDEMMIA. DELLE COPPIE SI UNISCONO DANZANDO</div>
+          <div class="degree-meaning">Simbolo di gioia spontanea dovuta all'adempimento di un lavoro naturale. La campagna opposta alla città.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">23°</div>
+          <div class="degree-symbol">TRE UCCELLINI NEL LORO NIDO</div>
+          <div class="degree-meaning">La possibilità di uno stimolo graduale delle facoltà mentali superiori. Queste richiedono ancora protezione costante.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">24°</div>
+          <div class="degree-symbol">BAMBINI CHE PATTINANO SU UNO STAGNO</div>
+          <div class="degree-meaning">Ciascuna stagione offre le proprie possibilità di attività; è importante riconoscerle e sfruttarle intelligentemente.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">25°</div>
+          <div class="degree-symbol">UN GIARDINIERE POTA UNA GRANDE PALMA</div>
+          <div class="degree-meaning">Non permettere allo stato mentale di disperdersi. Necessità di disciplina intellettuale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">26°</div>
+          <div class="degree-symbol">I RAMI DI ALBERI COPERTI DI BRINA SI STAGLIANO IN UN CIELO CHIARO</div>
+          <div class="degree-meaning">La scoperta della bellezza e della purezza degli archetipi dopo che le passioni vitali si siano dissipate.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">27°</div>
+          <div class="degree-symbol">UNA ZINGARA LASCIA IL BOSCO DOVE LA SUA TRIBÙ HA MONTATO IL CAMPO</div>
+          <div class="degree-meaning">Lo sforzo cosciente necessario per superare l'inerzia di una tradizione sociale e avventurarsi verso uno stato spirituale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">28°</div>
+          <div class="degree-symbol">LA BANCAROTTA OFFRE A UNA PERSONA UNA NUOVA OPPORTUNITÀ DI RIFARSI UNA VITA</div>
+          <div class="degree-meaning">La società non può autorizzare alcun fallimento definitivo. La compassione deve equilibrare il Karma.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">29°</div>
+          <div class="degree-symbol">POSATO SU UN RAMO, UN MERLO GIOCOSO ANNUNCIA LA PRIMAVERA</div>
+          <div class="degree-meaning">Il musicista di talento che trasfigura il repertorio popolare. Virtuosismo.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#f39c12;">30°</div>
+          <div class="degree-symbol">UN CONCORSO DI BELLEZZA FA SFILARE BELLE RAGAZZE DAVANTI ALLA FOLLA</div>
+          <div class="degree-meaning">La bellezza fisica e l'intelligenza come simboli di superiorità biologica e sociale. L'ambizione di giocare un ruolo speciale.</div>
+        </div>
+        </div></div>
+
+    <div class="sign-section" id="cancro">
+      <h2 class="sign-title" style="border-color:#2980b9; color:#2980b9;">CANCRO ♋</h2>
+      <div class="degrees-grid">
+    
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">1°</div>
+          <div class="degree-symbol">MARINAI DI UNA NAVE AMMAINANO LE VELE E CAMBIANO BANDIERA</div>
+          <div class="degree-meaning">Una crisi di autorità che tende a sottomettere l'Io e a fargli ricentrare il proprio campo di esperienza.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">2°</div>
+          <div class="degree-symbol">UN UOMO SU UN TAPPETO VOLANTE CONTEMPLA LE VASTE DISTESE</div>
+          <div class="degree-meaning">Le vaste prospettive aperte allo stato mentale superiore capace di superare i limiti di un'esistenza abitudinaria.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">3°</div>
+          <div class="degree-symbol">UN ESPLORATORE VESTITO DI FOLTE PELLICCE GUIDA UN CERVO NEL GRANDE FREDDO</div>
+          <div class="degree-meaning">Necessità di essere pronti a subire un isolamento totale in un ambiente ostile. Una prova di resistenza e determinazione.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">4°</div>
+          <div class="degree-symbol">UN GATTO DISCUTE CON UN TOPO</div>
+          <div class="degree-meaning">La facoltà di razionalizzare un comportamento istintivo per dargli un'apparenza migliore.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">5°</div>
+          <div class="degree-symbol">UN'AUTOMOBILE SCHIACCIATA DA UN TRENO A UN PASSAGGIO A LIVELLO</div>
+          <div class="degree-meaning">La probabilità di un disastro quando un desiderio irrazionale contrasta il corso impersonale delle abitudini collettive.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">6°</div>
+          <div class="degree-symbol">DEGLI UCCELLI, FUTURE PREDE DEI CACCIATORI, PREPARANO I LORO NIDI</div>
+          <div class="degree-meaning">Il rapporto misterioso fra la natura feconda e la specie umana sempre pronta a sfruttarla.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">7°</div>
+          <div class="degree-symbol">SPIRITI DELLA NATURA CHE DANZANO AL CHIARO DI LUNA</div>
+          <div class="degree-meaning">Le forze naturali interpretate a livello psichico dall'immaginazione creativa. La trama invisibile dell'esistenza.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">8°</div>
+          <div class="degree-symbol">DEI CONIGLI TRAVESTITI AVANZANO COME PER UNA SFILATA UFFICIALE</div>
+          <div class="degree-meaning">La necessità per ogni livello di coscienza di imitare forme di vita più evoluta.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">9°</div>
+          <div class="degree-symbol">UNA BAMBINA TUTTA NUDA SI CHINA SU UNO SPECCHIO D'ACQUA</div>
+          <div class="degree-meaning">Uno stadio primitivo, ma puro, dello sviluppo della coscienza intellettuale. Una curiosità ingenua.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">10°</div>
+          <div class="degree-symbol">UN GROSSO DIAMANTE CHE UN ABILE OPERAIO LIBERA DALLA SUA GANGA</div>
+          <div class="degree-meaning">Un senso profondo e simbolico può essere liberato da ogni esperienza se lo spirito ha appreso a farlo.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">11°</div>
+          <div class="degree-symbol">UN PAGLIACCIO FA LA PARODIA DI PERSONAGGI FAMOSI</div>
+          <div class="degree-meaning">Il valore dell'umorismo e dell'ironia per liberarci dal fascino dovuto ai grandi uomini o agli avvenimenti ufficiali.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">12°</div>
+          <div class="degree-symbol">UNA CINESE NUTRE UN NEONATO RIVELATO COME UN ADEPTO REINCARNATO</div>
+          <div class="degree-meaning">La possibilità di essere sensibili alle realtà spirituali dissimulate sotto forme ancora immature.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">13°</div>
+          <div class="degree-symbol">UNA MANO CON UN POLLICE PROMINENTE</div>
+          <div class="degree-meaning">Un carattere temprato da una ferma volontà; la necessità di affermarsi quando le circostanze lo richiedano.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">14°</div>
+          <div class="degree-symbol">UN VECCHIO PENETRA LE TENEBRE CON LO SGUARDO VERSO NORD-EST</div>
+          <div class="degree-meaning">La potenza di una saggezza capace di scoprire l'essenza delle cose anche le più nascoste.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">15°</div>
+          <div class="degree-symbol">DOPO UN BANCHETTO SONTUOSO GLI INVITATI PARLANO FRA LORO</div>
+          <div class="degree-meaning">Una visione di abbondanza materiale e di lusso. Le visioni spirituali tendono sempre a materializzarsi.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">16°</div>
+          <div class="degree-symbol">UNO PSICOLOGO STUDIA UN MANDALA CON L'AIUTO DI UN MANOSCRITTO ANTICO</div>
+          <div class="degree-meaning">Il valore di prendere coscienza del processo di individuazione e di mettere tutta l'esperienza in rapporto al Sé.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">17°</div>
+          <div class="degree-symbol">POSSIBILITÀ MULTIPLE CHE SI EVOLVONO DA UN GERME INIZIALE</div>
+          <div class="degree-meaning">Il fenomeno della crescita e alla sua origine la crocifissione del seme. Il divenire attuale del potenziale della nascita.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">18°</div>
+          <div class="degree-symbol">UNA GALLINA GRATTA IL SUOLO IN CERCA DI CIBO PER I SUOI PULCINI</div>
+          <div class="degree-meaning">La necessità di un approccio interamente concreto e pratico ai problemi di base dell'esistenza.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">19°</div>
+          <div class="degree-symbol">UN PRETE CELEBRA UN MATRIMONIO</div>
+          <div class="degree-meaning">La sanzione che la religione apporta ai rapporti interpersonali. L'importanza dei riti.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">20°</div>
+          <div class="degree-symbol">GONDOLIERI A VENEZIA CHE SUONANO UNA SERENATA</div>
+          <div class="degree-meaning">I principali riti biologici trovano un'espressione sociale. Il desiderio emerge dall'inconscio collettivo.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">21°</div>
+          <div class="degree-symbol">UNA PRIMA DONNA ESPRIME IL SUO VIRTUOSISMO ALL'OPERA</div>
+          <div class="degree-meaning">Il valore che la società attribuisce all'eminenza personale in un quadro relativamente ufficiale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">22°</div>
+          <div class="degree-symbol">UNA GIOVANE DONNA SULL'ORLO DI UNA DIGA ATTENDE UN VELIERO</div>
+          <div class="degree-meaning">L'attesa ansiosa dell'ideale che potrebbe venire. La speranza che sopravvive alle numerose delusioni.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">23°</div>
+          <div class="degree-symbol">LA RIUNIONE DI UN GRUPPO LETTERARIO</div>
+          <div class="degree-meaning">La formazione di un'élite necessaria alla cultura e la concentrazione sui simboli della comunicazione intellettuale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">24°</div>
+          <div class="degree-symbol">UNA DONNA E DUE UOMINI NAUFRAGHI SU UNA PICCOLA ISOLA</div>
+          <div class="degree-meaning">L'integrazione delle forze interiori nel campo ristretto di una personalità. L'interdipendenza dei valori psicologici.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">25°</div>
+          <div class="degree-symbol">UN UOMO POTENTE RICEVE UN'ISPIRAZIONE SPIRITUALE</div>
+          <div class="degree-meaning">Una via di comunicazione può aprirsi fra il divino e la persona umana che abbia dominato le proprie passioni.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">26°</div>
+          <div class="degree-symbol">LA BIBLIOTECA DI UNA RESIDENZA LUSSUOSA</div>
+          <div class="degree-meaning">Lo stimolo di una classe intellettuale favorito dalla ricchezza e da un'ideologia comune alle classi sociali superiori.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">27°</div>
+          <div class="degree-symbol">UNA TREMENDA TEMPESTA INFURIA SU UNA VALLE DELLE ÉLITEs SOCIALI</div>
+          <div class="degree-meaning">La fatalità di una crisi sociale dovuta a uno squilibrio fra ricchi e poveri.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">28°</div>
+          <div class="degree-symbol">UNA GIOVANE INDIANA PRESENTA ALLA TRIBÙ IL SUO INNAMORATO INGLESE</div>
+          <div class="degree-meaning">L'amore supera i pregiudizi antiquati di razza e cultura. Ritorno alla natura.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">29°</div>
+          <div class="degree-symbol">UNA MUSA DELL'ANTICA GRECIA PESA DUE GEMELLI SU UNA BILANCIA D'ORO</div>
+          <div class="degree-meaning">Il dualismo richiede, per essere risolto, il concorso di un'intuizione che trascenda il mentale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">30°</div>
+          <div class="degree-symbol">UN'ARISTOCRATICA AMERICANA DISCENDENTE DA UN FONDATORE DELLA REPUBBLICA</div>
+          <div class="degree-meaning">Il prestigio attribuito a un lungo lignaggio sociale, anche in una società che si dice egualitaria.</div>
+        </div>
+        </div></div>
+
+    <div class="sign-section" id="leone">
+      <h2 class="sign-title" style="border-color:#e67e22; color:#e67e22;">LEONE ♌</h2>
+      <div class="degrees-grid">
+    
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">1°</div>
+          <div class="degree-symbol">IL VISO DI UN UOMO ANIMATO DA UN'INTENSA AMBIZIONE INDICA UN ICTUS</div>
+          <div class="degree-meaning">Lo squilibrio biologico, causato da una sfrenata attività mentale, all'origine di una congestione cerebrale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">2°</div>
+          <div class="degree-symbol">UN'EPIDEMIA DI ORECCHIONI</div>
+          <div class="degree-meaning">La diffusione di una sindrome collettiva che attacca le forze biologiche di resistenza.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">3°</div>
+          <div class="degree-symbol">UNA DONNA DI MEZZA ETÀ TENTA DI APPARIRE GIOVANE</div>
+          <div class="degree-meaning">Un desiderio dominante di far fronte alle esigenze di una società che glorifica la giovinezza.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">4°</div>
+          <div class="degree-symbol">UN UOMO ANZIANO PRESENTA AL SUO CLUB I TROFEI DI UNA SPEDIZIONE DI CACCIA</div>
+          <div class="degree-meaning">Il desiderio di provare la propria mascolinità e l'audacia a dispetto del declino delle forze vitali.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">5°</div>
+          <div class="degree-symbol">LA ROCCIA DELLE PARETI DI UN PRECIPIZIO EVOCA FORME FAMIGLIARI</div>
+          <div class="degree-meaning">La potenza delle forze della natura che supera quella di qualunque scultore e umilia l'ambizione umana.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">6°</div>
+          <div class="degree-symbol">UNA GRANDE DAMA È AVVICINATA DA UNA GIOVANE HIPPIE</div>
+          <div class="degree-meaning">Il cambiamento periodico dei valori sociali impone confronti fra un passato in declino e un presente che lo capovolge.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">7°</div>
+          <div class="degree-symbol">LE COSTELLAZIONI BRILLANO IN UN CIELO NOTTURNO</div>
+          <div class="degree-meaning">La rivelazione dei valori archetipici la cui permanenza stabilisce una base solida per ogni cultura umana.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">8°</div>
+          <div class="degree-symbol">UN COMUNISTA FERVENTE ANNUNCIA IL SUO MESSAGGIO RIVOLUZIONARIO</div>
+          <div class="degree-meaning">Le forze cataboliche operano a livello della vita sociale e politica. Il potere di mobilitare le folle.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">9°</div>
+          <div class="degree-symbol">UN VETRAIO SOFFIA OGGETTI ASSAI BELLI</div>
+          <div class="degree-meaning">Il controllo della respirazione nello yoga è alla base dello sviluppo di un potere di formazione spirituale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">10°</div>
+          <div class="degree-symbol">CESPUGLI COPERTI DI RUGIADA CHE LUCCICANO DI LUCE MATTUTINA</div>
+          <div class="degree-meaning">Dopo la notte fredda, la trasfigurazione per mezzo della luce dello spirito divino.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">11°</div>
+          <div class="degree-symbol">DEI BAMBINI ALLEGRI VOLANO SU UN'ALTALENA ATTACCATA AI RAMI DI UNA GRANDE QUERCIA</div>
+          <div class="degree-meaning">La necessità di far riposare il volo dell'immaginazione sulle basi sicure della grande tradizione.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">12°</div>
+          <div class="degree-symbol">UN RICEVIMENTO SONTUOSO SU UN PRATO RISCHIARATO DA LANTERNE</div>
+          <div class="degree-meaning">I divertimenti degli adulti seguono la moda imposta dalla cultura. L'immaginazione creativa ridotta a motti di spirito.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">13°</div>
+          <div class="degree-symbol">UN CAPITANO DI VASCELLO IN PENSIONE CONVERSA CON DEGLI AMICI</div>
+          <div class="degree-meaning">Il piacere di partecipare ai giovani i ricordi di una vita piena di avvenimenti insoliti.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">14°</div>
+          <div class="degree-symbol">UN'ANIMA DISINCARNATA CERCA UN'OCCASIONE PER RITORNARE SULLA TERRA</div>
+          <div class="degree-meaning">La necessità per lo spirito di trovare nella materia un veicolo soddisfacente, e per l'astratto di farsi concreto.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">15°</div>
+          <div class="degree-symbol">UN GRANDE SPETTACOLO POPOLARE SI SVOLGE LUNGO UN VIALE PIENO DI FOLLA</div>
+          <div class="degree-meaning">L'importanza di dare alle emozioni collettive la possibilità di esprimersi liberamente in un quadro tradizionale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">16°</div>
+          <div class="degree-symbol">UN CHIARORE RADIOSO FA SEGUITO ALLA TEMPESTA</div>
+          <div class="degree-meaning">Capacità di cambiamento dopo una crisi personale o sociale. Volontà di rinnovamento.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">17°</div>
+          <div class="degree-symbol">UN CORO DI PARROCCHIANI RISUONA IN UNA PICCOLA CHIESA</div>
+          <div class="degree-meaning">Il valore profondo del sentimento comunitario capace di unire caratteri disparati verso un ideale comune.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">18°</div>
+          <div class="degree-symbol">UN ESPERIMENTO DI CHIMICA IN UN LABORATORIO UNIVERSITARIO</div>
+          <div class="degree-meaning">L'emozione suscitata dalla scoperta dei processi nascosti nella materia. L'alchimia delle forze psichiche.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">19°</div>
+          <div class="degree-symbol">SU UNA CHIATTA DECORATA CON LAMPIONI SI SVOLGE UNA FESTA DI GIOVANI</div>
+          <div class="degree-meaning">La liberazione temporanea di un'esistenza dominata dal costringimento. La gioia del flusso infinito della vita.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">20°</div>
+          <div class="degree-symbol">NEL VILLAGGIO INDIANO UN RITO SOLENNE CELEBRA LA LEVATA DEL SOLE</div>
+          <div class="degree-meaning">Il ritorno verso la natura e i culti primitivi delle forze vitali e cosmiche.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">21°</div>
+          <div class="degree-symbol">DEI POLLI CON LE ALI TAGLIATE CERCANO MALAMENTE DI VOLAR VIA</div>
+          <div class="degree-meaning">Il disordine generato dal fascino delle dottrine occulte la cui profondità ci sfugge ancora.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">22°</div>
+          <div class="degree-symbol">UN PICCIONE VIAGGIATORE COMPIE LA PROPRIA MISSIONE</div>
+          <div class="degree-meaning">L'attrazione necessaria al compimento di una missione spirituale o sociale. Un ideale di dedizione.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">23°</div>
+          <div class="degree-symbol">UNA GIOVANE DONNA ESEGUE DELLE ACROBAZIE SU UN CAVALLO AL GALOPPO</div>
+          <div class="degree-meaning">Il dominio delle energie brute della natura che genera un virtuosismo destinato al divertimento del pubblico.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">24°</div>
+          <div class="degree-symbol">UNO YOGI INDIANO MEDITA, DEL TUTTO IGNARO DEL MONDO ESTERIORE</div>
+          <div class="degree-meaning">La necessità di una concentrazione interiore totale per ottenere risultati occulti validi.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">25°</div>
+          <div class="degree-symbol">UN CAMMELLO MOLTO CARICO ATTRAVERSA IL DESERTO</div>
+          <div class="degree-meaning">Un'indipendenza quasi totale da condizioni esteriori apparentemente insormontabili, quando si compie una missione.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">26°</div>
+          <div class="degree-symbol">UN ARCOBALENO DOPO LA TEMPESTA</div>
+          <div class="degree-meaning">Il simbolo di una comunicazione fra Dio e l'uomo, sempre possibile se la crisi di crescita è stata vinta con coraggio.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">27°</div>
+          <div class="degree-symbol">IL CIELO IMPORPORATO AL SORGERE DEL SOLE</div>
+          <div class="degree-meaning">Necessità di avere la certezza che un rinnovamento è sempre possibile e di prepararsi all'alba.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">28°</div>
+          <div class="degree-symbol">UNA FOLLA DI UCCELLI MOLTO ANIMATI SU UN ALBERO</div>
+          <div class="degree-meaning">La confusione che spesso si produce quando esistono molte possibilità. L'importanza di uno studio oggettivo.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">29°</div>
+          <div class="degree-symbol">UNA SIRENA MANIFESTA IL SUO DESIDERIO DI PRENDERE UN ASPETTO UMANO</div>
+          <div class="degree-meaning">La transizione fra inconscio e conscio. Il pericolo di ricadere nell'oceano dell'inconscio.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#e67e22;">30°</div>
+          <div class="degree-symbol">UNA LETTERA LA CUI BUSTA È RIMASTA APERTA</div>
+          <div class="degree-meaning">La necessità di capire che alla fine nessun messaggio può restare nascosto. Tutti fanno parte della comunità planetaria.</div>
+        </div>
+        </div></div>
+
+    <div class="sign-section" id="vergine">
+      <h2 class="sign-title" style="border-color:#8e44ad; color:#8e44ad;">VERGINE ♍</h2>
+      <div class="degrees-grid">
+    
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">1°</div>
+          <div class="degree-symbol">UN RITRATTO FEDELE AL CARATTERE ESSENZIALE DI UN VISO</div>
+          <div class="degree-meaning">L'inizio di un ciclo che richiede lo stimolo di una percezione analitica e oggettiva degli elementi significativi.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">2°</div>
+          <div class="degree-symbol">UNA GRANDE CROCE BIANCA ERETTA SU UNA COLLINA</div>
+          <div class="degree-meaning">Si impone una lezione di distacco e di rinuncia. Una prova iniziatica che dovrebbe liberarci da un passato troppo stretto.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">3°</div>
+          <div class="degree-symbol">DUE ANGELI CUSTODI</div>
+          <div class="degree-meaning">L'appoggio dato dalle forze psichiche. Sono indicati due centri d'influenza; due pilastri di sostegno spirituale nell'iniziazione.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">4°</div>
+          <div class="degree-symbol">BAMBINI NERI E BIANCHI GIOCANO INSIEME SENZA ANIMOSITÀ</div>
+          <div class="degree-meaning">La necessità di superare i pregiudizi sociali e le divisioni politiche, sviluppando una visione d'insieme.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">5°</div>
+          <div class="degree-symbol">UN VEGGENTE SI RIVELA</div>
+          <div class="degree-meaning">Lo sviluppo di facoltà che permettono la percezione di entità ultra-fisiche. Un'immaginazione messa in valore dall'esperienza.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">6°</div>
+          <div class="degree-symbol">UNA GIOSTRA GIRA AL SUONO DI UNA MUSICA CHIASSOSA</div>
+          <div class="degree-meaning">Una presa di coscienza del carattere ciclico dell'esistenza e delle sue ripetute opportunità.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">7°</div>
+          <div class="degree-symbol">UN HAREM NELLA TURCHIA ANTICA</div>
+          <div class="degree-meaning">La molteplicità delle forme vitali sottomesse alla volontà di un dirigente; ma anche la confusione sul piano dei desideri personali.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">8°</div>
+          <div class="degree-symbol">UNA BAMBINA DI CINQUE ANNI PRENDE LA SUA PRIMA LEZIONE DI DANZA</div>
+          <div class="degree-meaning">La prima iniziazione ai movimenti dei rapporti creativi, trama dell'evoluzione della vita terrestre.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">9°</div>
+          <div class="degree-symbol">UN PITTORE ESPRESSIONISTA AL LAVORO</div>
+          <div class="degree-meaning">L'originalità innata che ogni persona che abbia toccato le profondità del proprio essere dovrebbe provare.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">10°</div>
+          <div class="degree-symbol">DUE VISI CHE CERCANO DI SCOPRIRE L'AL DI LÀ DELLE OMBRE</div>
+          <div class="degree-meaning">L'attività trascendente dello stato mentale umano convinto dell'esistenza di una realtà al di là delle tenebre dell'Io.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">11°</div>
+          <div class="degree-symbol">UNA MADRE INTRAVEDE NEL FIGLIO IL POTENZIALE DI CUI AVEVA SOGNATO</div>
+          <div class="degree-meaning">L'immaginazione creativa all'opera. La realizzazione dei grandi sogni capace di dare un senso superiore all'esistenza.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">12°</div>
+          <div class="degree-symbol">LO SPOSO TOGLIE IL VELO DELLA SPOSA</div>
+          <div class="degree-meaning">L'azione maschile polarizza il grande sogno della femminilità. Lo spirito liberato scopre la verità di una realtà superiore.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">13°</div>
+          <div class="degree-symbol">UN GRANDE UOMO DI STATO CANALIZZA L'ISTERISMO DI UNA FOLLA AGITATA</div>
+          <div class="degree-meaning">La possibilità di incarnare, al momento richiesto, la risposta ai bisogni confusi di una comunità.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">14°</div>
+          <div class="degree-symbol">UN ALBERO GENEALOGICO INDICA UN PASSATO ARISTOCRATICO</div>
+          <div class="degree-meaning">Il valore di antecedenti collettivi che sostiene e valorizza ogni iniziativa individuale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">15°</div>
+          <div class="degree-symbol">UN FAZZOLETTO DI PIZZO, EREDITÀ DI ANTENATI IMPORTANTI</div>
+          <div class="degree-meaning">Un ricordo d'amore dei tempi lontani, testimone di un lignaggio di antenati nobili. Si manifesta un'eleganza innata.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">16°</div>
+          <div class="degree-symbol">BAMBINI GUARDANO UN ORANGUTANG IN GABBIA</div>
+          <div class="degree-meaning">La necessità di far fronte al karma collettivo della propria razza. Le forze brute della natura, controllate ma sempre presenti.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">17°</div>
+          <div class="degree-symbol">UN'ERUZIONE VULCANICA</div>
+          <div class="degree-meaning">Il fuoco terrestre che la cultura a volte non può più contenere. Le passioni primitive al di là dell'esperienza umana.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">18°</div>
+          <div class="degree-symbol">UNA TAVOLETTA PER PRATICARE LO SPIRITISMO</div>
+          <div class="degree-meaning">La forma sotto cui lo spiritismo ha presentato i mezzi di comunicazione fra il piano psichico e la personalità umana.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">19°</div>
+          <div class="degree-symbol">UNA GARA DI NUOTO</div>
+          <div class="degree-meaning">Lo sforzo personale e collettivo che rappresenta lo sport. L'emulazione fra individui valorizza i loro sforzi.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">20°</div>
+          <div class="degree-symbol">UNA FILA DI VETTURE SULLA STRADA VERSO LA CALIFORNIA</div>
+          <div class="degree-meaning">Appoggio dato dalla collaborazione di tutti agli sforzi per scoprire un mondo nuovo.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">21°</div>
+          <div class="degree-symbol">UNA SQUADRA FEMMINILE DI PALLACANESTRO</div>
+          <div class="degree-meaning">L'integrazione di volontà e talenti individuali in una squadra che valorizza il carattere specifico di tutti i suoi membri.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">22°</div>
+          <div class="degree-symbol">UNO STEMMA REGALE INCASTONATO DI PIETRE PREZIOSE</div>
+          <div class="degree-meaning">La prova di uno stato innato di superiorità e la responsabilità che ne deriva. Noblesse oblige.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">23°</div>
+          <div class="degree-symbol">UN AMMAESTRATORE DI LEONI DOMA LE FIERE DI UN CIRCO</div>
+          <div class="degree-meaning">Il controllo degli istinti e degli impulsi psichici per mezzo di una volontà paziente e risoluta.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">24°</div>
+          <div class="degree-symbol">MARIA E IL SUO AGNELLINO</div>
+          <div class="degree-meaning">Un racconto per bambini ci ricorda il valore di un atteggiamento di semplicità e purezza sul cammino dell'iniziazione spirituale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">25°</div>
+          <div class="degree-symbol">UNA BANDIERA A MEZZ'ASTA DAVANTI A UN EDIFICIO PUBBLICO</div>
+          <div class="degree-meaning">Il riconoscimento ufficiale dell'azione sociale di una persona che si è identificata con un archetipo culturale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">26°</div>
+          <div class="degree-symbol">UN CHIERICHETTO AGITA UN INCENSIERE</div>
+          <div class="degree-meaning">Partecipazione nel suo stadio primario ai riti complessi della nostra cultura e sua influenza sulla formazione del carattere.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">27°</div>
+          <div class="degree-symbol">UN GRUPPO DI GRANDI DAME IN UNA CORTE REALE</div>
+          <div class="degree-meaning">La capacità di perpetuare un'alta tradizione esige superiorità sui mezzi formali, una condotta piena di dignità.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">28°</div>
+          <div class="degree-symbol">UN LEADER SI IMPADRONISCE DEL POTERE</div>
+          <div class="degree-meaning">Afferrare senza esitazione ogni occasione quando si presenti. Il senso intimo di un destino pubblico da assumersi.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">29°</div>
+          <div class="degree-symbol">UN UOMO AFFASCINATO DALLE SCIENZE OCCULTE CERCA I LORO FONDAMENTI IN UNA VECCHIA PERGAMENA</div>
+          <div class="degree-meaning">Ritorno alle fonti del pensiero antico. La concentrazione mentale necessaria per vivificare le facoltà spirituali.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">30°</div>
+          <div class="degree-symbol">UNA PERSONA ASSORBITA DA UN COMPITO URGENTE RESTA SORDA A QUALUNQUE APPELLO ESTERNO</div>
+          <div class="degree-meaning">Una totale concentrazione dell'attenzione e della volontà. Ogni desiderio centrifugo deve essere soppresso.</div>
+        </div>
+        </div></div>
+
+    <div class="sign-section" id="bilancia">
+      <h2 class="sign-title" style="border-color:#16a085; color:#16a085;">BILANCIA ♎</h2>
+      <div class="degrees-grid">
+    
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">1°</div>
+          <div class="degree-symbol">IN UN MUSEO UNA BELLISSIMA FARFALLA, IL CORPO TRAFITTO DA UN AGO</div>
+          <div class="degree-meaning">La rivelazione della forma archetipica perfetta di un essere trasformato dal sacrificio dell'immanente. L'Iniziazione.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">2°</div>
+          <div class="degree-symbol">LA RIVELAZIONE DELL'UNITÀ ORIENTA E TRASCENDE LA PERFEZIONE DELLE FORME</div>
+          <div class="degree-meaning">Al di là del fiore dove si compone l'esistenza, il seme dove si trova la totalità dello spazio.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">3°</div>
+          <div class="degree-symbol">ALL'ALBA DI UN GIORNO NUOVO TUTTA LA NATURA SI TROVA TRASFORMATA</div>
+          <div class="degree-meaning">Dopo un periodo di meditazione e di trasformazione soggettiva, lo svolgimento dell'energia creativa.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">4°</div>
+          <div class="degree-symbol">UN GRUPPO DI GIOVANI SI RACCOGLIE INTORNO A UN FUOCO DA CAMPO</div>
+          <div class="degree-meaning">L'importanza di trovare dei compagni a cui partecipare le nostre prove sul cammino della trasformazione dell'Io.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">5°</div>
+          <div class="degree-symbol">UN MAESTRO INSEGNA A UN GRUPPO DI DISCEPOLI</div>
+          <div class="degree-meaning">La capacità di trasmettere un sapere superiore. L'azione transpersonale e rivelatrice, libera di ogni influenza egocentrica.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">6°</div>
+          <div class="degree-symbol">UN ARTISTA REALIZZA IL CAMMINO DA PERCORRERE PER GIUNGERE ALLA REALIZZAZIONE DEI PROPRI SOGNI</div>
+          <div class="degree-meaning">Il processo formativo dell'attività mentale. La tecnica.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">7°</div>
+          <div class="degree-symbol">UNA CONTADINA PROTEGGE I SUOI POLLI MINACCIATI DA UN FALCO</div>
+          <div class="degree-meaning">Necessità di controllare le forze distruttive risvegliate da ogni sforzo spirituale veramente creativo.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">8°</div>
+          <div class="degree-symbol">UN FUOCO SOPRANNATURALE BRUCIA NEL CAMINO DI UNA FATTORIA DESERTA</div>
+          <div class="degree-meaning">La possibilità di rinnovare uno sforzo abbandonato quando il centro spirituale della coscienza è ancora attivo.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">9°</div>
+          <div class="degree-symbol">TRE QUADRI CELEBRI ESPOSTI IN UN MUSEO</div>
+          <div class="degree-meaning">L'ispirazione che suscitano le grandi realizzazioni del passato. Un ritorno alla tradizione e ai suoi aspetti complementari.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">10°</div>
+          <div class="degree-symbol">UNA CANOA GIUNGE IN ACQUE CALME DOPO LA TRAVERSATA DI RAPIDE PERICOLOSE</div>
+          <div class="degree-meaning">Il coraggio e la fede necessarie per assicurare il successo di ogni iniziativa che mette in gioco le forze vitali.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">11°</div>
+          <div class="degree-symbol">UN VECCHIO PROFESSORE SCRUTA IL VISO DEGLI ALLIEVI CHE INTERROGA</div>
+          <div class="degree-meaning">I problemi suscitati dall'acquisizione e la trasmissione di un sapere che risponde ai bisogni della società.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">12°</div>
+          <div class="degree-symbol">MINATORI CHE ESCONO DA UNA PROFONDA MINIERA DI CARBONE</div>
+          <div class="degree-meaning">La necessità di estrarre dal passato tutto ciò che possa facilitare la vita quotidiana. La psicologia delle profondità.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">13°</div>
+          <div class="degree-symbol">BAMBINI CHE SI DIVERTONO A FARE BOLLE DI SAPONE</div>
+          <div class="degree-meaning">I giochi creati dalla cultura e dall'immaginazione collettiva, che riflettono le realtà del mondo spirituale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">14°</div>
+          <div class="degree-symbol">UN UOMO FA LA SIESTA DOPO UNA MATTINATA ASSAI FATICOSA</div>
+          <div class="degree-meaning">L'importanza di periodi di riposo e di recupero dopo grandi sforzi.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">15°</div>
+          <div class="degree-symbol">APPAIONO TRAIETTORIE CIRCOLARI</div>
+          <div class="degree-meaning">Un senso profondo dei processi ciclici di tutta l'esistenza. Vivere in accordo con i ritmi universali.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">16°</div>
+          <div class="degree-symbol">UNA DIGA DEMOLITA DALLA TEMPESTA È RICOSTRUITA</div>
+          <div class="degree-meaning">L'importanza di mantenere una comunicazione costante fra inconscio e coscienza, e di vincere ogni scoraggiamento.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">17°</div>
+          <div class="degree-symbol">UN VECCHIO MARINAIO SEGUE L'ARRIVO E LA PARTENZA DI GRANDI VELIERI</div>
+          <div class="degree-meaning">La serenità profonda e il distacco che dovrebbero seguire le esperienze proprie di un'attività vasta e audace.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">18°</div>
+          <div class="degree-symbol">DUE UOMINI IN STATO D'ARRESTO</div>
+          <div class="degree-meaning">La necessità per la società di preservare il proprio equilibrio collettivo quando questo sia minacciato.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">19°</div>
+          <div class="degree-symbol">UN GRUPPO DI BRIGANTI TENDE UN'IMBOSCATA</div>
+          <div class="degree-meaning">La contestazione dei privilegi sociali. Pulsioni rimosse che si rivoltano contro usanze consuete.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">20°</div>
+          <div class="degree-symbol">UN RABBINO NELLE SUE FUNZIONI RELIGIOSE</div>
+          <div class="degree-meaning">Dipendenza totale dalla tradizione e da un modo collettivo di esistenza. Accettazione della propria responsabilità sociale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">21°</div>
+          <div class="degree-symbol">UNA SPIAGGIA INVASA DALLA FOLLA DELLA DOMENICA</div>
+          <div class="degree-meaning">Il ritorno alla natura di individui esausti per le tensioni sociali. La psicologia delle masse.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">22°</div>
+          <div class="degree-symbol">UN BAMBINO FELICE NEL VEDERE DEGLI UCCELLI CHE SI DISSETANO A UNA FONTANA</div>
+          <div class="degree-meaning">La felicità che nasce da un'empatia infantile, ma pura, con tutti gli elementi maturi per le forze dello spirito.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">23°</div>
+          <div class="degree-symbol">IL GALLO SALUTA COL SUO CANTO IL LEVARE DEL SOLE</div>
+          <div class="degree-meaning">Attitudine a dar voce agli slanci creativi dell'esistenza, ma anche illusione di essere responsabili dei propri rinnovamenti.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">24°</div>
+          <div class="degree-symbol">SUL LATO SINISTRO DI UNA BELLA FARFALLA APPARE UNA TERZA ALA</div>
+          <div class="degree-meaning">Simbolo di compimento che rivela la possibilità di un cambiamento spirituale. L'intuizione che supera il dualismo mentale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">25°</div>
+          <div class="degree-symbol">ALL'INIZIO DELL'AUTUNNO UNA FOGLIA DORATA EVOCA IL CARATTERE CICLICO DELLA VITA</div>
+          <div class="degree-meaning">L'attitudine a scoprire in tutti gli avvenimenti un senso profondo che li collochi nell'armonia del mondo.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">26°</div>
+          <div class="degree-symbol">UN'AQUILA E UNA COLOMBA BIANCA SI TRASFORMANO L'UNA NELL'ALTRA</div>
+          <div class="degree-meaning">La polarizzazione delle forze spirituali, l'audacia e la pace — la rivelazione divina e l'amore che unisce luce e tenebre.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">27°</div>
+          <div class="degree-symbol">UN AEROPLANO IN VOLO A GRANDE ALTEZZA</div>
+          <div class="degree-meaning">Il superamento dei limiti dello spazio e del tempo da parte della matrice delle forze dello stato mentale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">28°</div>
+          <div class="degree-symbol">UN UOMO CHE PRENDE COSCIENZA DELLE FORZE SPIRITUALI CHE LO CIRCONDANO</div>
+          <div class="degree-meaning">Nessuno è completamente solo. L'importanza di una viva fede a sostegno di una comunità invisibile.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">29°</div>
+          <div class="degree-symbol">LO SFORZO COSTANTE DELLE GENERAZIONI VERSO UN SAPERE SEMPRE PIÙ INTEGRALE</div>
+          <div class="degree-meaning">La necessità di partecipare coscientemente all'evoluzione generale del pensiero umano.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#16a085;">30°</div>
+          <div class="degree-symbol">TRE PROTUBERANZE CRANICHE SUGGERISCONO LO SLANCIO DI UNO SPIRITO FILOSOFICO</div>
+          <div class="degree-meaning">La saggezza filosofica in contrasto al sapere intellettuale: un approccio olistico ai problemi dell'esistenza.</div>
+        </div>
+        </div></div>
+
+    <div class="sign-section" id="scorpione">
+      <h2 class="sign-title" style="border-color:#c0392b; color:#c0392b;">SCORPIONE ♏</h2>
+      <div class="degrees-grid">
+    
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">1°</div>
+          <div class="degree-symbol">UN AUTOBUS PIENO DI TURISTI DESIDEROSI DI AMMIRARE I MONUMENTI DELLA CITTÀ</div>
+          <div class="degree-meaning">Ampliamento del campo della coscienza attraverso la scoperta dei valori stranieri. Curiosità intellettuale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">2°</div>
+          <div class="degree-symbol">UN FLACONE DI CRISTALLO ROTTO: SI SPRIGIONA UN PROFUMO DELICATO</div>
+          <div class="degree-meaning">L'attrazione a volte straziante di una cultura antica; oppure dei ricordi personali che sarebbe meglio non risuscitare.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">3°</div>
+          <div class="degree-symbol">I VICINI DI UNA GIOVANE COPPIA LI AIUTANO A COSTRUIRE LA LORO CASA</div>
+          <div class="degree-meaning">La cooperazione sociale nel suo aspetto più intimo. Il valore psicologico di un servizio disinteressato.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">4°</div>
+          <div class="degree-symbol">UN CHIERICHETTO PORTA ALL'ALTARE UN CERO ACCESO</div>
+          <div class="degree-meaning">L'importanza di partecipare nel modo più semplice possibile alle attività rituali di una vita comunitaria.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">5°</div>
+          <div class="degree-symbol">UNA SCOGLIERA ROCCIOSA RESISTE AL FRANGERSI DI GRANDI ONDE</div>
+          <div class="degree-meaning">La resistenza al cambiamento delle istituzioni sociali e religiose. Una coscienza stabile.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">6°</div>
+          <div class="degree-symbol">LA CORSA ALL'ORO IN CALIFORNIA</div>
+          <div class="degree-meaning">L'attrazione della ricchezza e di tutto ciò che procura una posizione sociale privilegiata.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">7°</div>
+          <div class="degree-symbol">PALOMBARI CHE ESPLORANO GLI ABISSI SOTTOMARINI</div>
+          <div class="degree-meaning">Psicologia delle profondità. Ricerca delle cause inconsce dei complessi. Coraggio di vedere chiaro in se stessi.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">8°</div>
+          <div class="degree-symbol">UN LAGO CALMO IN CUI SI RIFLETTE LA LUNA PIENA</div>
+          <div class="degree-meaning">La calma interiore necessaria a un'ispirazione superiore, ma essenzialmente di natura mentale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">9°</div>
+          <div class="degree-symbol">UN DENTISTA AL LAVORO</div>
+          <div class="degree-meaning">Attitudine a correggere le malefatte dovute all'artificiosità della vita sociale e alle cattive abitudini personali.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">10°</div>
+          <div class="degree-symbol">UNA CENA RIUNISCE DEI VECCHI COMPAGNI DI GUERRA</div>
+          <div class="degree-meaning">L'unificazione psichica che proviene da un'esperienza comune. La cooperazione, base del senso sociale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">11°</div>
+          <div class="degree-symbol">SU UNA SPIAGGIA, SI RIANIMA UN ANNEGATO</div>
+          <div class="degree-meaning">L'azione umanitaria di un gruppo verso una persona in difficoltà. Compassione attiva, fattore di salute.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">12°</div>
+          <div class="degree-symbol">UN GRANDE BALLO NEI SALONI DI UN'AMBASCIATA</div>
+          <div class="degree-meaning">Gli scambi culturali che uniscono le classi superiori delle nazioni al di là dei conflitti politici.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">13°</div>
+          <div class="degree-symbol">UN INVENTORE CHE RIESCE IN UN ESPERIMENTO DI LABORATORIO</div>
+          <div class="degree-meaning">Inventiva capace di stabilire dei rapporti ancora sconosciuti fra oggetti o processi. Una ricerca paziente.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">14°</div>
+          <div class="degree-symbol">OPERAI CHE INSTALLANO PALI TELEGRAFICI</div>
+          <div class="degree-meaning">La necessità di permettere innumerevoli scambi di idee e di informazioni.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">15°</div>
+          <div class="degree-symbol">BAMBINI CHE GIOCANO INTORNO A CINQUE MONTICELLI DI SABBIA</div>
+          <div class="degree-meaning">Lo spirito umano dominato dai cinque sensi; ma anche lo sviluppo dello stato mentale per mezzo del libero gioco delle idee.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">16°</div>
+          <div class="degree-symbol">IL VISO DI UNA GIOVANE DONNA, ABBELLITO DAL SUO SORRISO</div>
+          <div class="degree-meaning">Espressione spontanea di sentimenti interiori. Il contagio del buon umore. Fervore di vivere.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">17°</div>
+          <div class="degree-symbol">UNA DONNA FECONDATA DALLO SPIRITO DIVINO CHE LA ANIMA</div>
+          <div class="degree-meaning">L'azione fertile del Sé in seno a una personalità aperta all'incarnazione di forze spirituali.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">18°</div>
+          <div class="degree-symbol">UNA FORESTA VESTITA DEI COLORI AUTUNNALI</div>
+          <div class="degree-meaning">La ricchezza interiore che emerge alla fine di un ciclo di vita ben vissuto. Trasformazione della materia da parte dello spirito.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">19°</div>
+          <div class="degree-symbol">UN PAPPAGALLO CHE RIPETE QUELLO CHE ODE</div>
+          <div class="degree-meaning">Attività mentale condizionata da un'ispirazione trascendente che non può ancora comprendere.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">20°</div>
+          <div class="degree-symbol">UNA DONNA TOGLIE DUE SPESSE TENDE CHE NASCONDONO UN PASSAGGIO SACRO</div>
+          <div class="degree-meaning">L'azione rivelatrice dell'intuizione che supera il dualismo dell'intelletto e conduce al mistero della vita mistica.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">21°</div>
+          <div class="degree-symbol">UN SOLDATO RIFIUTA DI OBBEDIRE A UN ORDINE CHE CREDE INGIUSTIFICATO</div>
+          <div class="degree-meaning">Conflitto di coscienza. La libertà di giudizio individuale di fronte all'autorità sociale. Contestazione.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">22°</div>
+          <div class="degree-symbol">CACCIATORI CHE SPIANO UN VOLO DI ANATRE SELVATICHE</div>
+          <div class="degree-meaning">La socializzazione degli istinti. L'intelligenza messa al servizio degli impulsi primitivi della natura umana.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">23°</div>
+          <div class="degree-symbol">UN CONIGLIO SI TRASFORMA IN SPIRITO DELLA NATURA</div>
+          <div class="degree-meaning">La sublimazione delle forze sessuali. Trasformazione degli istinti.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">24°</div>
+          <div class="degree-symbol">UNA FOLLA DISCENDE DA UNA MONTAGNA DOVE HA RICEVUTO LA PAROLA DI UN GRANDE MAESTRO</div>
+          <div class="degree-meaning">Il ritorno alla vita normale dopo un'esperienza sublime. Come praticare i grandi insegnamenti?</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">25°</div>
+          <div class="degree-symbol">I RAGGI X RIVELANO UN TUMORE NORMALMENTE INVISIBILE</div>
+          <div class="degree-meaning">Capacità di scoprire la struttura essenziale delle cose al di là della superficialità delle percezioni ordinarie.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">26°</div>
+          <div class="degree-symbol">UNA TRIBÙ PRIMITIVA STABILISCE IL PROPRIO CAMPO SU UN TERRENO VERGINE</div>
+          <div class="degree-meaning">Valore di una facoltà di adattamento rapido a condizioni di esistenza nuova.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">27°</div>
+          <div class="degree-symbol">RIMBOMBA LA MUSICA DI UN REGGIMENTO</div>
+          <div class="degree-meaning">L'esaltazione aggressiva di una cultura nazionale. La forma pomposa della forza della collettività sull'individuo.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">28°</div>
+          <div class="degree-symbol">IL RE DELLE FATE SI AVVICINA AL SUO REGNO</div>
+          <div class="degree-meaning">Integrazione delle forze psichiche da parte dell'Io che dà loro un centro effettivo. La potenza dei grandi simboli culturali.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">29°</div>
+          <div class="degree-symbol">UNA DONNA SUPPLICA IL CAPO DELLA SUA TRIBÙ DI PERDONARE I SUOI BAMBINI</div>
+          <div class="degree-meaning">Il potere di intercessione dell'amore e della preghiera. La compassione capace di equilibrare la forza del Karma.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#c0392b;">30°</div>
+          <div class="degree-symbol">GRUPPI DI BAMBINI CON COSTUMI IMPROVVISATI GIRANO PER LE STRADE</div>
+          <div class="degree-meaning">Necessità di dare libero corso di tanto in tanto alla rivolta di emozioni puerili che la vita sociale ha dovuto arginare.</div>
+        </div>
+        </div></div>
+
+    <div class="sign-section" id="sagittario">
+      <h2 class="sign-title" style="border-color:#d35400; color:#d35400;">SAGITTARIO ♐</h2>
+      <div class="degrees-grid">
+    
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">1°</div>
+          <div class="degree-symbol">UNA RIUNIONE DI REDUCI DI UNA GUERRA QUASI DIMENTICATA</div>
+          <div class="degree-meaning">L'importanza di ravvivare la memoria delle crisi superate durante le quali si è forgiata una volontà potente.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">2°</div>
+          <div class="degree-symbol">LA TEMPESTA SOLLEVA ONDE DI SCHIUMA</div>
+          <div class="degree-meaning">Sotto l'impulso di motivi spirituali si mobilitano energie rimaste a lungo inconsce.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">3°</div>
+          <div class="degree-symbol">UN GIOCO DI SCACCHI</div>
+          <div class="degree-meaning">Ritualizzazione dei conflitti fondamentali dell'esistenza. Una trasformazione simbolica degli istinti di lotta.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">4°</div>
+          <div class="degree-symbol">UN BAMBINO IMPARA A CAMMINARE, GUIDATO DAI SUOI GENITORI</div>
+          <div class="degree-meaning">L'assistenza offerta da parte delle forze superiori durante le crisi naturali di crescita.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">5°</div>
+          <div class="degree-symbol">UN GUFO SOLITARIO POSATO SU UN ALBERO</div>
+          <div class="degree-meaning">La saggezza che può provenire dalla contemplazione interiore capace di penetrare i misteri dell'inconscio.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">6°</div>
+          <div class="degree-symbol">UN GIOCO DI CRICKET</div>
+          <div class="degree-meaning">Slancio di un sentimento collettivo di solidarietà, che posa tuttavia sull'esistenza di un avversario.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">7°</div>
+          <div class="degree-symbol">CUPIDO BUSSA ALLA PORTA DI UN CUORE</div>
+          <div class="degree-meaning">Trasformazione della coscienza individuale per mezzo di un amore romantico che supera ogni forma sociale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">8°</div>
+          <div class="degree-symbol">I METALLI CHE SI FORMANO ALL'INTERNO DELLA TERRA SOTTO L'AZIONE DI UN INTENSO CALORE</div>
+          <div class="degree-meaning">L'alchimia e la trasformazione degli elementi psichici dell'essere interiore. La forza di una grande passione.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">9°</div>
+          <div class="degree-symbol">UNA MADRE AIUTA IL SUO BAMBINO A SALIRE PASSO DOPO PASSO UNA SCALA</div>
+          <div class="degree-meaning">Necessità di un'educazione progressiva e dell'assistenza di persone più evolute.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">10°</div>
+          <div class="degree-symbol">UN'ATTRICE DAI CAPELLI D'ORO INCARNA LA DÈSSA DELL'OPPORTUNITÀ</div>
+          <div class="degree-meaning">Valore dell'ambizione nella vita sociale e dei rischi finanziari. Fede ingenua nel caso.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">11°</div>
+          <div class="degree-symbol">UNA FIAMMA IN FORMA UMANA SFUGGE DA UNA LAMPADA SUL ALTARE DI UN TEMPIO</div>
+          <div class="degree-meaning">Ritorno agli istinti primordiali dell'organismo e a ciò che ci insegnano.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">12°</div>
+          <div class="degree-symbol">UNA BANDIERA SI TRASFORMA IN AQUILA, POI IN GALLO CHE SALUTA IL SORGERE DEL SOLE</div>
+          <div class="degree-meaning">Necessità per la coscienza umana di passare dall'ideale astratto alla realtà concreta delle esperienze giornaliere.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">13°</div>
+          <div class="degree-symbol">VIENE RIVELATA LA VITA PASSATA DI UNA VEDOVA</div>
+          <div class="degree-meaning">La persistenza dei fantasmi psicologici. L'evocazione di un passato ingannevole alla fine di un ciclo.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">14°</div>
+          <div class="degree-symbol">LA SFINGE E LA GRANDE PIRAMIDE</div>
+          <div class="degree-meaning">La presenza costante di una Tradizione segreta e di esseri sovrumani che l'hanno rivelata. Lo stato mentale superiore.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">15°</div>
+          <div class="degree-symbol">LA MARMOTTA AMERICANA E IL SUO COMPORTAMENTO PROFETICO</div>
+          <div class="degree-meaning">Le reazioni istintive ai cambiamenti stagionali e l'importanza di vivere all'unisono dei ritmi universali.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">16°</div>
+          <div class="degree-symbol">GABBIANI CHE VOLANO INTORNO A UN PIROSCAFO CHE SI AVVICINA A UN PORTO</div>
+          <div class="degree-meaning">Pericolo di una subordinazione totale dell'azione individuale alle condizioni sociali.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">17°</div>
+          <div class="degree-symbol">UNA CELEBRAZIONE DELLA PASQUA ALL'ALBA, SULLA SOMMITÀ DI UNA COLLINA</div>
+          <div class="degree-meaning">L'importanza di esaltare i grandi momenti della vita spirituale e di ricominciare tutto periodicamente.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">18°</div>
+          <div class="degree-symbol">DEI BAMBINI PROTETTI DAL SOLE COCENTE GIOCANO SU UNA SPIAGGIA</div>
+          <div class="degree-meaning">Necessità di proteggere i giovanissimi da ciò che non possono ancora assimilare in modo sano.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">19°</div>
+          <div class="degree-symbol">UN GRUPPO DI PELLICANI LASCIA IL PROPRIO AMBIENTE MINACCIATO</div>
+          <div class="degree-meaning">Istinto di sopravvivenza. Necessità di stabilire condizioni di sicurezza.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">20°</div>
+          <div class="degree-symbol">UNO STAGNO GELATO: GLI ABITANTI TAGLIANO BLOCCHI DI GHIACCIO PER L'ESTATE</div>
+          <div class="degree-meaning">La previdenza indispensabile per mantenersi in buono stato quando le condizioni di vita cambiano.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">21°</div>
+          <div class="degree-symbol">UN BAMBINO E UN CANE SI DIVERTONO A PORTARE DEGLI OCCHIALI</div>
+          <div class="degree-meaning">Imparare è prima di tutto imitare quelli che sanno. L'anticipazione a volte dannosa di ciò che non si può ancora comprendere.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">22°</div>
+          <div class="degree-symbol">UNA LAVANDERIA CINESE IN UNA VILLA AMERICANA</div>
+          <div class="degree-meaning">La necessità di adattarsi a un ambiente sociale straniero. Plasticità psicologica.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">23°</div>
+          <div class="degree-symbol">IMMIGRANTI INTERROGATI IN UN PORTO DI ENTRATA</div>
+          <div class="degree-meaning">Momento di transizione. Resistenza e fede in se stessi necessarie per ricominciare la vita dopo una crisi totale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">24°</div>
+          <div class="degree-symbol">L'UCCELLO BLU SIMBOLICO APPOLLAIATO SU UN BALCONE DI UNA CASETTA DI CAMPAGNA</div>
+          <div class="degree-meaning">La felicità che illumina la vita di coloro che ne sono degni.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">25°</div>
+          <div class="degree-symbol">UN BAMBINO PAFFUTO SUL SUO CAVALLINO DI LEGNO</div>
+          <div class="degree-meaning">Valore dell'immaginazione che anticipa la realtà di un futuro incerto. Simbolo di sessualità immatura.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">26°</div>
+          <div class="degree-symbol">UN PORTA-BANDIERA IN MEZZO ALLA BATTAGLIA</div>
+          <div class="degree-meaning">L'importanza di rimanere fedeli ai principi che abbiamo accettato, anche nella confusione di un conflitto ideologico.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">27°</div>
+          <div class="degree-symbol">UNO SCULTORE AL LAVORO</div>
+          <div class="degree-meaning">Il talento indispensabile per dare una forma concreta e convincente a ciò che è stato concepito o provato.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">28°</div>
+          <div class="degree-symbol">UN PONTE ANTICO ANCORA MOLTO FREQUENTATO SOPRA UN BEL FIUME</div>
+          <div class="degree-meaning">Il valore di realizzazioni sociali sostenute da una lunga tradizione e in armonia con la natura.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">29°</div>
+          <div class="degree-symbol">UN ADOLESCENTE TOSA L'ERBETTA DAVANTI ALLA CASA ELEGANTE DEI SUOI GENITORI</div>
+          <div class="degree-meaning">Lo sforzo necessario per assicurarsi un'esistenza sociale rispettabile sotto tutti i punti di vista.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#d35400;">30°</div>
+          <div class="degree-symbol">IL PAPA CHE BENEDICE LA FOLLA</div>
+          <div class="degree-meaning">Il riconoscimento commosso di un'autorità capace di offrire a un ideale collettivo una realtà concreta e personale.</div>
+        </div>
+        </div></div>
+
+    <div class="sign-section" id="capricorno">
+      <h2 class="sign-title" style="border-color:#2c3e50; color:#2c3e50;">CAPRICORNO ♑</h2>
+      <div class="degrees-grid">
+    
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">1°</div>
+          <div class="degree-symbol">UN GUERRIERO VALOROSO DOMANDA I POTERI DI UN CAPO ALLA SUA TRIBÙ</div>
+          <div class="degree-meaning">Un'attitudine speciale di approfittare di ogni occasione per ingrandire il campo della propria attività sociale. Volontà di potenza.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">2°</div>
+          <div class="degree-symbol">UNA CATTEDRALE BOMBARDATA: UNO DEI SUOI TRE GRANDI ROSONI È DISTRUTTO</div>
+          <div class="degree-meaning">La distruzione parziale che una crisi violenta apporta ai valori spirituali.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">3°</div>
+          <div class="degree-symbol">UN'ANIMA IN CERCA DI UNA NUOVA INCARNAZIONE</div>
+          <div class="degree-meaning">Il fascino esercitato dal dinamismo di una nuova esistenza ricca di emozioni e di avvenimenti.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">4°</div>
+          <div class="degree-symbol">ABITANTI DI UN VILLAGGIO CHE SI APPRESTANO A UN VIAGGIO IN CANOA</div>
+          <div class="degree-meaning">Necessità di prepararsi al fine di fare ciò che si è deciso. Attenzione ai dettagli.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">5°</div>
+          <div class="degree-symbol">UNA PIROGA PIENA DI INDIANI: ALCUNI REMANO, ALTRI ESEGUONO UNA DANZA DI GUERRA</div>
+          <div class="degree-meaning">La realizzazione che ogni iniziativa richiede non solo azioni pratiche ma anche una stimolazione psicologica.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">6°</div>
+          <div class="degree-symbol">UN VIALE DI GRANDI ALBERI FORMA UNA VOLTA CHE CONDUCE A UNA FORESTA</div>
+          <div class="degree-meaning">Necessità di considerare nella sua interezza ciò che si impara e di metterlo a frutto.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">7°</div>
+          <div class="degree-symbol">IN FRANCIA UN PROFETA VELATO ANNUNCIA UN MESSAGGIO DIVINO</div>
+          <div class="degree-meaning">Mobilitazione delle energie più profonde del proprio essere in un'azione transpersonale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">8°</div>
+          <div class="degree-symbol">CANARINI CHE CANTANO IN UN SALONE ASSOLATO</div>
+          <div class="degree-meaning">La felicità dovuta a un'esistenza agevole dà ai valori dello spirito il posto che la cultura assegna loro.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">9°</div>
+          <div class="degree-symbol">UN ANGELO CON LA SUA ARPA</div>
+          <div class="degree-meaning">Essere in armonia con i ritmi dell'universo e dedicare la propria vita al servizio di Dio.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">10°</div>
+          <div class="degree-symbol">IN PIENO MARE UN ALBATRO ADDOMESTICATO È NUTRITO DAI MARINAI</div>
+          <div class="degree-meaning">Accettare con fiducia ciò che si ha ragione di considerare come un'opportunità offerta dalla vita.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">11°</div>
+          <div class="degree-symbol">FAGIANI CHE VOLANO NEL BOSCO DI UN CASTELLO</div>
+          <div class="degree-meaning">Lo slancio dei valori aristocratici sul piano biologico e culturale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">12°</div>
+          <div class="degree-symbol">UN CONFERENZIERE PRESENTA UN FILM SU ASPETTI POCO CONOSCIUTI DELLA NATURA</div>
+          <div class="degree-meaning">La ricerca scientifica. Dovere di porre domande e il coraggio di far fronte alle relative risposte.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">13°</div>
+          <div class="degree-symbol">FEDELI PROSTERNATI DAVANTI A UN FUOCO SACRO</div>
+          <div class="degree-meaning">Un'attitudine a penetrare i segreti più profondi della materia. Azione magica. Volontà di trasformazione.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">14°</div>
+          <div class="degree-symbol">UN BASSORILIEVO ANTICO SCOLPITO NEL GRANITO</div>
+          <div class="degree-meaning">Desiderio di immortalare la nostra personalità e i valori della nostra cultura.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">15°</div>
+          <div class="degree-symbol">UN OSPEDALE PER BAMBINI PIENO DI GIOCATTOLI A LORO DISPOSIZIONE</div>
+          <div class="degree-meaning">Preoccupazione di imprimere immagini tradizionali nello spirito di una generazione nuova.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">16°</div>
+          <div class="degree-symbol">IL CORTILE DI UNA SCUOLA: RAGAZZI E RAGAZZE IN TENUTA DA GINNASTICA</div>
+          <div class="degree-meaning">Necessità di un'attività fisica normale per lo sviluppo di una personalità sana e priva di tensioni psicologiche.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">17°</div>
+          <div class="degree-symbol">UNA DONNA DI UNA CERTA ETÀ PRATICA IL NUDISMO</div>
+          <div class="degree-meaning">Obbligo di liberarsi dei limiti di una tradizione opprimente sotto una forma, quale che sia.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">18°</div>
+          <div class="degree-symbol">LA BANDIERA BRITANNICA SVENTOLA SU UNA NAVE DA GUERRA</div>
+          <div class="degree-meaning">Una glorificazione della forza collettiva. Il senso profondo del destino specifico del gruppo a cui si appartiene.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">19°</div>
+          <div class="degree-symbol">UNA BAMBINA DI CINQUE ANNI FA DEGLI ACQUISTI PER SUA MADRE</div>
+          <div class="degree-meaning">Maturità precoce. Desiderio di servire l'umanità al momento opportuno.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">20°</div>
+          <div class="degree-symbol">UN CORO INVISIBILE RISUONA IN UNA CHIESA</div>
+          <div class="degree-meaning">L'integrazione degli sforzi personali con un'azione comune dedicata a uno scopo spirituale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">21°</div>
+          <div class="degree-symbol">UNA STAFFETTA</div>
+          <div class="degree-meaning">Scambio ritmico di sforzi motivati da un'ambizione comune. Cooperazione effettiva a un fine materiale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">22°</div>
+          <div class="degree-symbol">UN GENERALE ACCETTA NOBILMENTE LA PROPRIA DISFATTA</div>
+          <div class="degree-meaning">Superamento di uno stato inferiore grazie all'immaginazione. L'accettazione del rischio. Spirito sportivo.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">23°</div>
+          <div class="degree-symbol">UN SOLDATO DECORATO DUE VOLTE PER IL SUO CORAGGIO</div>
+          <div class="degree-meaning">Le ricompense che la vita offre a coloro che non esitano a vivere in maniera totale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">24°</div>
+          <div class="degree-symbol">UNA GIOVANE DONNA ENTRA IN CONVENTO</div>
+          <div class="degree-meaning">Un impegno totale in una strada che ci isola dalla vita normale. La forza della vita religiosa.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">25°</div>
+          <div class="degree-symbol">UNA BOTTEGA DI TAPPETI ORIENTALI</div>
+          <div class="degree-meaning">Il conforto spirituale basato sulla devozione alle tradizioni di un tempo. Gusto del lusso.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">26°</div>
+          <div class="degree-symbol">ONDINE CHE SEMBRANO DANZARE FRA I RIFLESSI IRIDATI DI UNA CASCATA</div>
+          <div class="degree-meaning">Immaginazione poetica e attitudine a percepire l'essenza occulta delle forze della natura.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">27°</div>
+          <div class="degree-symbol">UN FACOCERIO CHE CARICA I CACCIATORI</div>
+          <div class="degree-meaning">La brutalità degli istinti primitivi quando vengono stimolati da influenze esterne. Reazioni impulsive.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">28°</div>
+          <div class="degree-symbol">IN UN LAGO AGITATO DALLA TEMPESTA, UNA CANOA LOTTA CON LE ONDE</div>
+          <div class="degree-meaning">La forza interiore e il coraggio necessari per affrontare le forze sconosciute o caotiche della vita.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">29°</div>
+          <div class="degree-symbol">UN GRUPPO DI CONTADINI FESTEGGIA IL RACCOLTO</div>
+          <div class="degree-meaning">La gioia semplice e pura di partecipare ai cicli naturali dell'esistenza. Il valore del lavoro condiviso.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2c3e50;">30°</div>
+          <div class="degree-symbol">UN BAMBINO E UN CANE GIOCANO FELICEMENTE</div>
+          <div class="degree-meaning">La semplicità e la purezza dei rapporti affettivi spontanei. La gioia di essere vivi e liberi.</div>
+        </div>
+        </div></div>
+
+    <div class="sign-section" id="acquario">
+      <h2 class="sign-title" style="border-color:#2980b9; color:#2980b9;">ACQUARIO ♒</h2>
+      <div class="degrees-grid">
+    
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">1°</div>
+          <div class="degree-symbol">UN UOMO CHE HA NAUFRAGATO VIENE SALVATO DA UNA SIRENA</div>
+          <div class="degree-meaning">L'intervento delle forze della natura per salvare un essere in pericolo. La possibilità di essere aiutati in modo inaspettato.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">2°</div>
+          <div class="degree-symbol">UN UOMO CHE MANGIA UN PASTO FRUGALE</div>
+          <div class="degree-meaning">La consapevolezza che le cose semplici della vita possono essere sufficienti. La sobrietà come virtù spirituale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">3°</div>
+          <div class="degree-symbol">UNA GIGANTESCA STATUA INTAGLIATA NELLA ROCCIA</div>
+          <div class="degree-meaning">La potenza della volontà umana capace di trasformare la materia bruta in un'espressione culturale duratura.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">4°</div>
+          <div class="degree-symbol">UNA BANDA DI MUSICISTI AMBULANTI SUONA IN UN VICOLO</div>
+          <div class="degree-meaning">Il valore della musica e dell'arte come mezzo di comunicazione spontanea fra esseri umani di diverse condizioni.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">5°</div>
+          <div class="degree-symbol">UN'AQUILA E UNA GALLINA DI BASSA CORTE SI CONTENDONO UNO STECCATO</div>
+          <div class="degree-meaning">Il conflitto fra l'ideale elevato e le preoccupazioni materiali. La necessità di scegliere tra volare alto o restare a terra.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">6°</div>
+          <div class="degree-symbol">A UN BALLO IN MASCHERA, UNA GIOVANE DONNA BALLA CON UN UOMO IN COSTUME DA IMPERATORE ROMANO</div>
+          <div class="degree-meaning">Il fascino delle culture del passato. La tendenza a rivestire le proprie aspirazioni con forme di grandezza storica.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">7°</div>
+          <div class="degree-symbol">UNA BALLERINA ESEGUE IL PASSO DELL'ELEFANTE</div>
+          <div class="degree-meaning">La capacità di trarre ispirazione dalla natura e di esprimere con grazia le grandi forze elementali.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">8°</div>
+          <div class="degree-symbol">UNA PERSONA DISTINTA PORGE UN AIUTO CONCRETO A UN POVERO</div>
+          <div class="degree-meaning">La generosità spontanea e il servizio agli altri come espressione di una nobiltà interiore autentica.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">9°</div>
+          <div class="degree-symbol">UN TORNEO DI BORSE MEDIEVALE</div>
+          <div class="degree-meaning">Il valore della competizione codificata come mezzo per sviluppare la forza e il coraggio individuali.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">10°</div>
+          <div class="degree-symbol">UN AEREO CHE VOLA NELLA NOTTE TRASPORTA UN'EQUIPE DI SOCCORSO</div>
+          <div class="degree-meaning">La mobilizzazione delle energie moderne al servizio degli altri. Il progresso tecnico al servizio dell'umanità.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">11°</div>
+          <div class="degree-symbol">DURANTE UNA TEMPESTA DI NEVE, UN MAN CERCA RIFUGIO IN UN COTTAGE</div>
+          <div class="degree-meaning">La necessità di trovare un rifugio e un calore umano durante le prove della vita.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">12°</div>
+          <div class="degree-symbol">UN UOMO PRENDE LE IMPRONTE DIGITALI DI UN ALTRO</div>
+          <div class="degree-meaning">La necessità di identificare chiaramente la propria identità e quella degli altri. Il controllo sociale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">13°</div>
+          <div class="degree-symbol">UNA FARFALLA ESCE DAL SUO BOZZOLO</div>
+          <div class="degree-meaning">La trasformazione e la rinascita. La capacità di liberarsi delle limitazioni del passato per spiegare le ali.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">14°</div>
+          <div class="degree-symbol">UN UOMO PESCA CON UN RETINO IN UN RUSCELLO MONTANO</div>
+          <div class="degree-meaning">La pazienza e la precisione necessarie per raccogliere le risorse dell'inconscio. La pesca come meditazione.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">15°</div>
+          <div class="degree-symbol">UN VECCHIO PROFETA PORTA UN MESSAGGIO UNIVERSALE</div>
+          <div class="degree-meaning">La capacità di vedere al di là del tempo e dello spazio e di comunicare le verità eterne all'umanità.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">16°</div>
+          <div class="degree-symbol">UNA DONNA DI GHIACCIO CHE AGISCE COME REIFICAZIONE DELLA PAURA</div>
+          <div class="degree-meaning">La tendenza a cristallizzare le emozioni negative e a isolarsi dalla calda corrente della vita.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">17°</div>
+          <div class="degree-symbol">UN MILIONARIO CHE METTE IN OPERA I PIANI CHE HA ELABORATI DURANTE LE ORE LIBERE</div>
+          <div class="degree-meaning">La capacità di conciliare il successo materiale con le aspirazioni spirituali e creative.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">18°</div>
+          <div class="degree-symbol">UNA DONNA CHE HA APPENA SUBITO UN'OPERAZIONE DIFFICILE CONSTATA CON SOLLIEVO CHE SI È SALVATA</div>
+          <div class="degree-meaning">Il trionfo della volontà di vivere su prove fisiche o psicologiche. La fede nella guarigione.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">19°</div>
+          <div class="degree-symbol">UN LAGO DEL NORD VIENE INTERAMENTE ILLUMINATO DAI RAGGI DEL SOLE DI MEZZANOTTE</div>
+          <div class="degree-meaning">L'illuminazione spirituale che penetra anche nelle regioni più oscure dell'essere. La luce che non conosce notte.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">20°</div>
+          <div class="degree-symbol">MONACI TIBETANI IN PREGHIERA</div>
+          <div class="degree-meaning">Il potere della preghiera collettiva e della devozione spirituale. La forza che emana da una comunità che prega.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">21°</div>
+          <div class="degree-symbol">UNA BAMBINA CHE ALLEVA UN'AGNELLA</div>
+          <div class="degree-meaning">La tenerezza e la cura come virtù fondamentali. La forza del legame affettivo con la natura.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">22°</div>
+          <div class="degree-symbol">UN UOMO CHE LAVORA NOTTETEMPO A PIANTARE SEMI NEL SUO CAMPO</div>
+          <div class="degree-meaning">Il valore del lavoro oscuro e solitario che porterà i suoi frutti in un futuro lontano.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">23°</div>
+          <div class="degree-symbol">UN DIRIGENTE CHE ACCOMPAGNA I MARINAI A SCOPRIRE LE ROTTE MARINE INCONTRATE PER LA PRIMA VOLTA</div>
+          <div class="degree-meaning">Il valore del coraggio e della guida nel navigare verso l'ignoto. L'esplorazione come avventura spirituale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">24°</div>
+          <div class="degree-symbol">UN UOMO ANZIANO CHE GUARDA DEGLI ALPINISTI SCALARE UN PICCO INNEVATO</div>
+          <div class="degree-meaning">La saggezza di chi ha già scalato le cime della vita e può ora guidare gli altri con la sua esperienza.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">25°</div>
+          <div class="degree-symbol">UN'ESPLORATRICE ARTICA</div>
+          <div class="degree-meaning">Il coraggio di affrontare le regioni più fredde e sconosciute dell'esistenza. La volontà di scoprire nuovi orizzonti.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">26°</div>
+          <div class="degree-symbol">UN UOMO CHE RICEVE NUOVA FORZA E ISPIRAZIONE DA UN'ESPERIENZA SPIRITUALE</div>
+          <div class="degree-meaning">Il rinnovamento interiore che segue a un'apertura autentica alle forze spirituali. La grazia come forza vivificante.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">27°</div>
+          <div class="degree-symbol">UN ANZIANO MUSICISTA CHE SUONA IL VIOLINO SOLO NELLA FORESTA</div>
+          <div class="degree-meaning">La musica come meditazione e come dialogo con la natura. La solitudine creatrice come fonte di ispirazione.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">28°</div>
+          <div class="degree-symbol">UN GRANDE FIUME DI ACQUA DOLCE CHE SCORRE ATTRAVERSO LA JUNGLA</div>
+          <div class="degree-meaning">La forza vitale che scorre liberamente attraverso le regioni ancora inesplorate dell'essere. La purezza originale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">29°</div>
+          <div class="degree-symbol">UN UOMO CHE RIDISEGNA I VALORI MORALI DEL SUO GRUPPO</div>
+          <div class="degree-meaning">La capacità di rinnovare i valori etici di una comunità adattandoli alle necessità dei tempi nuovi.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#2980b9;">30°</div>
+          <div class="degree-symbol">LA LUNA IN PIENA E UN CANE CHE ULULA</div>
+          <div class="degree-meaning">La risposta istintiva alle grandi forze della natura. L'influenza della luna sull'inconscio collettivo.</div>
+        </div>
+        </div></div>
+
+    <div class="sign-section" id="pesci">
+      <h2 class="sign-title" style="border-color:#8e44ad; color:#8e44ad;">PESCI ♓</h2>
+      <div class="degrees-grid">
+    
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">1°</div>
+          <div class="degree-symbol">UNO SPIRITO CHE EMERGE DALLA NEBBIA DI SEA DRIFT</div>
+          <div class="degree-meaning">L'affermazione di una nuova coscienza sorta da condizioni di vita ancora informi e caotiche.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">2°</div>
+          <div class="degree-symbol">SEDICENTI SPIRITI MATERIALIZZATI DURANTE UNA SEDUTA SPIRITICA</div>
+          <div class="degree-meaning">La difficoltà di distinguere tra le forze psichiche autentiche e le illusioni create dall'immaginazione.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">3°</div>
+          <div class="degree-symbol">UNA TROUPE DI MIMI</div>
+          <div class="degree-meaning">La capacità di esprimere realtà universali attraverso la mimica e il gesto. Il linguaggio del corpo come comunicazione spirituale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">4°</div>
+          <div class="degree-symbol">UNA GRANDE RIUNIONE DI RICERCATORI SPIRITUALI</div>
+          <div class="degree-meaning">Il valore di riunirsi per condividere le proprie ricerche interiori e stimolarsi a vicenda.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">5°</div>
+          <div class="degree-symbol">UN UOMO CHE PORTA UNA PIUMA D'AQUILA INDIANA</div>
+          <div class="degree-meaning">Il riconoscimento dei meriti spirituali acquisiti attraverso la prova e il sacrificio.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">6°</div>
+          <div class="degree-symbol">STELLE FILANTI GALLEGGIANO SUI CANALI DI VENEZIA</div>
+          <div class="degree-meaning">La bellezza effimera che corona i momenti di festa collettiva. Il piacere come rituale di vita.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">7°</div>
+          <div class="degree-symbol">DELITTI NON SPIEGATI VENGONO RISOLTI DA UN INVESTIGATORE</div>
+          <div class="degree-meaning">La capacità di penetrare i misteri della vita e di portare alla luce la verità nascosta.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">8°</div>
+          <div class="degree-symbol">UN ORFANO ESCLUSO DELLA SOCIETA'</div>
+          <div class="degree-meaning">La difficoltà di coloro che, privi di radici, cercano il loro posto nel mondo. Il bisogno di appartenenza.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">9°</div>
+          <div class="degree-symbol">UN IMPONENTE CATACLISMA</div>
+          <div class="degree-meaning">Le grandi crisi collettive come catalizzatori di trasformazione. La purificazione che segue alla distruzione.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">10°</div>
+          <div class="degree-symbol">UN POETA SI IDENTIFICA CON IL SOLE NASCENTE</div>
+          <div class="degree-meaning">La capacità di risonare con le grandi forze cosmiche. L'ispirazione poetica come forma di illuminazione.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">11°</div>
+          <div class="degree-symbol">IN UNA SCUOLA DI DANZA ORIENTALE, UN'INIZIATA STUDIA LE DANZE SACRE</div>
+          <div class="degree-meaning">Il valore della tradizione come mezzo di trasmissione dei misteri sacri. La disciplina come via di liberazione.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">12°</div>
+          <div class="degree-symbol">UNA CERIMONIA DI BATTESIMO</div>
+          <div class="degree-meaning">Il rito di passaggio che segna l'entrata in una comunità spirituale. La rinascita come atto sacro.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">13°</div>
+          <div class="degree-symbol">UNA DONNA INGINOCCHIATA IN ADORAZIONE DAVANTI A UNA STATUA</div>
+          <div class="degree-meaning">La devozione come forma di apertura alla grazia divina. Il potere trasformatore dell'adorazione.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">14°</div>
+          <div class="degree-symbol">UNA GROTTA ADORNATA DI STALATTITI E STALAGMITI</div>
+          <div class="degree-meaning">La bellezza nascosta nelle profondità della terra e dell'inconscio. La pazienza come forza creatrice.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">15°</div>
+          <div class="degree-symbol">UN UOMO CERCATORE DI SPIRITI SCENDE IN UNA GROTTA CON UNA LAMPADA</div>
+          <div class="degree-meaning">Il coraggio di esplorare le regioni più oscure della propria psiche. La lampada della coscienza come guida.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">16°</div>
+          <div class="degree-symbol">UNA TROTA CHE NUOTA IN UN RUSCELLO DI MONTAGNA</div>
+          <div class="degree-meaning">La capacità di muoversi agilmente nelle correnti della vita, risalendo il flusso verso le sorgenti.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">17°</div>
+          <div class="degree-symbol">UNA GIGANTESCA MASCHERATA MEDIEVALE</div>
+          <div class="degree-meaning">La capacità di rivestire ogni aspetto della vita di significato simbolico e rituale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">18°</div>
+          <div class="degree-symbol">UN PIANETA DISTRUTTO DA UN IMPATTO METEORICO</div>
+          <div class="degree-meaning">Le grandi crisi cosmiche come necessità evolutive. La distruzione che precede una nuova creazione.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">19°</div>
+          <div class="degree-symbol">UN UOMO CHE TENDE UNA TRAPPOLA AI GATTI SELVATICI</div>
+          <div class="degree-meaning">La necessità di controllare e disciplinare le energie selvatiche e instintive della propria natura.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">20°</div>
+          <div class="degree-symbol">UNA PICCOLA MISSIONE SOLITARIA IN UN PAESE STRANIERO</div>
+          <div class="degree-meaning">Il servizio spirituale offerto in condizioni di isolamento e di difficoltà. La forza della vocazione.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">21°</div>
+          <div class="degree-symbol">UN UOMO CHE PORTA UNA BAMBINA FERITA A CASA SUA</div>
+          <div class="degree-meaning">La compassione come risposta immediata alla sofferenza. Il dono di sé come atto spirituale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">22°</div>
+          <div class="degree-symbol">UN SANTONE ORIENTALE CHE PORTA UNA STRANA MISSIONE</div>
+          <div class="degree-meaning">La presenza di saggezze antiche che portano messaggi insoliti. L'incontro fra culture distanti.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">23°</div>
+          <div class="degree-symbol">SPIRITI DANZANTI NEL VENTO</div>
+          <div class="degree-meaning">La percezione delle forze invisibili che animano la natura. La comunicazione con i regni sottili.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">24°</div>
+          <div class="degree-symbol">UN ANIMALE TOTEMICO CHE GUIDA UN UOMO ATTRAVERSO LE TENEBRE</div>
+          <div class="degree-meaning">La guida interiore che si manifesta attraverso i simboli della natura. L'istinto come saggezza.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">25°</div>
+          <div class="degree-symbol">IL CORPO GLORIOSO DI UN ESSERE UMANO RESUSCITATO</div>
+          <div class="degree-meaning">La trasformazione finale della materia in luce spirituale. La resurrezione come meta dell'evoluzione.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">26°</div>
+          <div class="degree-symbol">A WEST POINT, UN CADETTO SUL CAMPO D'ADDESTRAMENTO</div>
+          <div class="degree-meaning">La disciplina e la formazione necessarie per servire un ideale collettivo. La preparazione come virtù.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">27°</div>
+          <div class="degree-symbol">UN'IMPRESSARIO' ORIENTALE SI RIVOLGE AL PUBBLICO</div>
+          <div class="degree-meaning">La capacità di mediare fra culture diverse e di comunicare a tutti il messaggio universale dello spirito.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">28°</div>
+          <div class="degree-symbol">UN UOMO CAMMINANDO SCOPRE CHE I SUOI PIEDI SI TRASFORMANO IN ZOCCOLI DI CAVALLO</div>
+          <div class="degree-meaning">La presa di coscienza delle proprie radici animali. L'integrazione degli istinti nell'evoluzione spirituale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">29°</div>
+          <div class="degree-symbol">UN'ASTRONOMA DI FAMA CHE RICEVE NUOVI PREMI</div>
+          <div class="degree-meaning">Il riconoscimento dei contributi straordinari alla conoscenza umana. La scienza come forma di esplorazione spirituale.</div>
+        </div>
+        
+        <div class="degree-card">
+          <div class="degree-num" style="background:#8e44ad;">30°</div>
+          <div class="degree-symbol">LA PIENA DEL NILO RIPORTA LA FERTILITÀ ALLA TERRA</div>
+          <div class="degree-meaning">Il ritorno periodico delle grandi energie vivificanti che rinnovano la vita. Il ciclo eterno della morte e della rinascita.</div>
+        </div>
+        </div></div>
+
+</div>
+
+<div id="audioBtn" onclick="toggleAudio()" title="Musica mistica">🔊</div>
+
+<script>
+function filterCards() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  document.querySelectorAll('.degree-card').forEach(card => {
+    card.style.display = card.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+  document.querySelectorAll('.sign-section').forEach(sec => {
+    const visible = [...sec.querySelectorAll('.degree-card')].some(c => c.style.display !== 'none');
+    sec.style.display = visible ? '' : 'none';
+  });
+}
+
+const MUSIC_URL = "https://cdn.pixabay.com/audio/2022/10/16/audio_b923571947.mp3";
+const audio = new Audio(MUSIC_URL);
+audio.loop = true; audio.volume = 0.4;
+let playing = false;
+const btn = document.getElementById('audioBtn');
+function toggleAudio() {
+  if (!playing) { audio.play().then(() => { playing = true; btn.textContent = '🔇'; }); }
+  else { audio.pause(); playing = false; btn.textContent = '🔊'; }
+}
+window.addEventListener('click', function startOnce() { if (!playing) toggleAudio(); window.removeEventListener('click', startOnce); }, {once: true});
+</script>
+</body>
+</html>

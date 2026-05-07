@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tema Natale Gratuito – ArcanaViva</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f0e4a0; --text: #3a2800; --gold: #8a6200;
+  --gold2: #b8920a; --card: rgba(255,240,160,0.7);
+  --card-border: rgba(139,98,0,0.3); --accent: #6b4800;
+}
+body {
+  background: linear-gradient(160deg, #f5ebb0 0%, #f0e4a0 50%, #e8d880 100%);
+  color: var(--text); font-family: 'Cormorant Garamond', serif; min-height: 100vh;
+}
+.site-header {
+  background: linear-gradient(180deg, #e8d070 0%, #f0e4a0 100%);
+  border-bottom: 1px solid rgba(139,98,0,0.25);
+  padding: 16px 24px; display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.logo {
+  font-family: 'Cinzel', serif; font-size: 1.3rem; font-weight: 700;
+  color: var(--accent); letter-spacing: 0.15em; text-decoration: none;
+}
+.logo span { font-weight: 400; color: var(--gold2); }
+.site-nav { display: flex; gap: 18px; flex-wrap: wrap; }
+.site-nav a {
+  font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold); text-decoration: none;
+  opacity: 0.8; transition: opacity 0.2s;
+}
+.site-nav a:hover, .site-nav a.active { opacity: 1; color: var(--accent); }
+
+.hero {
+  text-align: center; padding: 50px 20px 30px;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200,160,20,0.15), transparent);
+}
+.hero-tag {
+  font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.4em;
+  text-transform: uppercase; color: var(--gold2); margin-bottom: 12px; opacity: 0.85;
+}
+.hero h1 {
+  font-family: 'Cinzel', serif; font-size: clamp(1.6rem, 5vw, 2.4rem);
+  font-weight: 700; color: var(--accent); margin-bottom: 14px; letter-spacing: 0.04em;
+}
+.hero-divider {
+  width: 80px; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold2), transparent);
+  margin: 14px auto;
+}
+.hero p {
+  font-style: italic; font-size: 1.05rem; color: rgba(58,40,0,0.78);
+  max-width: 540px; margin: 0 auto; line-height: 1.85;
+}
+
+/* PREVIEW SECTION */
+.preview-section {
+  max-width: 820px; margin: 30px auto; padding: 0 20px;
+}
+.preview-box {
+  background: var(--card); border: 1px solid var(--card-border);
+  border-radius: 14px; padding: 28px 24px;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 28px;
+}
+.preview-chart { flex: 1; min-width: 220px; display: flex; justify-content: center; }
+.preview-info { flex: 1; min-width: 220px; }
+.preview-info h2 {
+  font-family: 'Cinzel', serif; font-size: 0.95rem; color: var(--accent);
+  margin-bottom: 14px; letter-spacing: 0.06em;
+}
+.planet-list { list-style: none; }
+.planet-list li {
+  font-size: 0.92rem; color: rgba(58,40,0,0.82);
+  padding: 4px 0; border-bottom: 1px solid rgba(139,98,0,0.1);
+  display: flex; align-items: center; gap: 8px;
+}
+.planet-list li:last-child { border-bottom: none; }
+.planet-sym { font-size: 1rem; width: 22px; }
+.preview-quote {
+  margin-top: 16px; font-style: italic; font-size: 0.88rem;
+  color: var(--gold); line-height: 1.7; border-left: 2px solid var(--gold2);
+  padding-left: 12px;
+}
+
+/* FORM SECTION */
+.form-section {
+  max-width: 620px; margin: 0 auto 50px; padding: 0 20px;
+}
+.form-title {
+  font-family: 'Cinzel', serif; font-size: 1rem; color: var(--accent);
+  text-align: center; margin-bottom: 20px; letter-spacing: 0.08em;
+  padding-bottom: 10px; border-bottom: 1px solid rgba(139,98,0,0.25);
+}
+.form-box {
+  background: var(--card); border: 1px solid var(--card-border);
+  border-radius: 14px; padding: 28px 24px;
+}
+.form-intro {
+  text-align: center; font-style: italic; font-size: 0.96rem;
+  color: rgba(58,40,0,0.75); margin-bottom: 22px; line-height: 1.7;
+}
+.form-group { margin-bottom: 18px; }
+.form-group label {
+  display: block; font-family: 'Cinzel', serif; font-size: 0.72rem;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent);
+  margin-bottom: 6px;
+}
+.form-group input, .form-group select {
+  width: 100%; padding: 11px 14px;
+  border: 1.5px solid rgba(139,98,0,0.35);
+  border-radius: 8px; background: rgba(255,248,200,0.8);
+  font-family: 'Cormorant Garamond', serif; font-size: 1rem;
+  color: var(--text); outline: none; transition: border-color 0.2s;
+}
+.form-group input:focus, .form-group select:focus {
+  border-color: var(--gold2); background: rgba(255,252,220,0.95);
+}
+.form-row { display: flex; gap: 14px; }
+.form-row .form-group { flex: 1; }
+.form-note {
+  font-style: italic; font-size: 0.78rem; color: rgba(58,40,0,0.55);
+  margin-top: 5px;
+}
+.submit-btn {
+  width: 100%; padding: 14px;
+  background: var(--accent); color: #f5ebb0;
+  font-family: 'Cinzel', serif; font-size: 0.82rem;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  border: none; border-radius: 30px; cursor: pointer;
+  margin-top: 8px; transition: background 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 16px rgba(107,72,0,0.25);
+}
+.submit-btn:hover {
+  background: var(--gold); box-shadow: 0 6px 24px rgba(107,72,0,0.35);
+}
+.submit-btn:active { transform: scale(0.98); }
+
+/* STEPS */
+.steps-row {
+  display: flex; gap: 12px; justify-content: center;
+  flex-wrap: wrap; margin-bottom: 22px;
+}
+.step-item {
+  background: rgba(255,248,200,0.8); border: 1px solid rgba(139,98,0,0.2);
+  border-radius: 10px; padding: 10px 14px; text-align: center;
+  flex: 1; min-width: 120px; max-width: 160px;
+}
+.step-icon { font-size: 1.4rem; margin-bottom: 4px; }
+.step-item p { font-size: 0.78rem; color: var(--accent); font-style: italic; line-height: 1.4; }
+
+/* CTA */
+.cta { text-align: center; padding: 0 20px 50px; }
+.cta p { font-style: italic; font-size: 1rem; color: rgba(58,40,0,0.7); margin-bottom: 14px; }
+.cta-btn {
+  display: inline-block; padding: 13px 36px; background: var(--accent);
+  color: #f5ebb0; font-family: 'Cinzel', serif; font-size: 0.78rem;
+  letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none;
+  border-radius: 30px; box-shadow: 0 4px 16px rgba(107,72,0,0.25);
+  transition: background 0.3s;
+}
+.cta-btn:hover { background: var(--gold); }
+
+.site-footer {
+  text-align: center; padding: 20px;
+  border-top: 1px solid rgba(139,98,0,0.2);
+  font-style: italic; font-size: 0.8rem;
+  color: rgba(58,40,0,0.55); letter-spacing: 0.15em;
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://amber-konstanze-74.tiiny.site/" class="logo">Arcana<span>Viva</span> · <em style="font-size:0.85rem; font-family:'Cormorant Garamond',serif;">Flavia Astrologa</em></a>
+  <nav class="site-nav">
+    <a href="https://amber-konstanze-74.tiiny.site/#servizi">Servizi</a>
+    <a href="https://amber-konstanze-74.tiiny.site/#flavia">Flavia</a>
+    <a href="https://amber-konstanze-74.tiiny.site/pietre_cristalloterapia_arcana.html">💎 Cristalloterapia</a>
+    <a href="https://amber-konstanze-74.tiiny.site/tema_natale.html" class="active">⭐ Tema Natale</a>
+    <a href="tel:00355697658561">📞 Contattami</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <p class="hero-tag">✦ &nbsp; Astrologia &nbsp;·&nbsp; Tema Natale Gratuito &nbsp; ✦</p>
+  <h1>Calcola il tuo Tema Natale</h1>
+  <div class="hero-divider"></div>
+  <p>La tua carta natale è il <em>progetto dell'anima</em>.<br>Inserisci i tuoi dati e scopri subito i tuoi pianeti,<br>i tuoi segni e le tue case zodiacali.</p>
+</section>
+
+<!-- VISUAL PREVIEW -->
+<section class="preview-section">
+  <div class="preview-box">
+    <div class="preview-chart">
+      <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" style="max-width:380px; width:100%; filter: drop-shadow(0 8px 24px rgba(107,72,0,0.25));">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="50%"><stop offset="0%" stop-color="#fffde8"/><stop offset="100%" stop-color="#e0c840"/></radialGradient>
+    <radialGradient id="innerGrad" cx="50%" cy="50%"><stop offset="0%" stop-color="#fff9d0"/><stop offset="100%" stop-color="#f0d870"/></radialGradient>
+    <radialGradient id="centerGrad" cx="50%" cy="50%"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#f5e898"/></radialGradient>
+  </defs>
+  <circle cx="250" cy="250" r="240" fill="url(#bgGrad)" stroke="#8a6200" stroke-width="2"/>
+  <circle cx="250" cy="250" r="225" fill="none" stroke="#b8920a" stroke-width="1" stroke-dasharray="3,3"/>
+  <circle cx="250" cy="250" r="195" fill="none" stroke="#8a6200" stroke-width="1.5"/>
+  <g stroke="#8a6200" stroke-width="1" opacity="0.6">
+    <line x1="250" y1="250" x2="250" y2="25"/><line x1="250" y1="250" x2="462" y2="141"/>
+    <line x1="250" y1="250" x2="462" y2="359"/><line x1="250" y1="250" x2="250" y2="475"/>
+    <line x1="250" y1="250" x2="38" y2="359"/><line x1="250" y1="250" x2="38" y2="141"/>
+    <line x1="250" y1="250" x2="375" y2="37"/><line x1="250" y1="250" x2="463" y2="250"/>
+    <line x1="250" y1="250" x2="375" y2="463"/><line x1="250" y1="250" x2="125" y2="463"/>
+    <line x1="250" y1="250" x2="37" y2="250"/><line x1="250" y1="250" x2="125" y2="37"/>
+  </g>
+  <g font-size="20" text-anchor="middle" dominant-baseline="middle" fill="#6b4800" font-family="serif">
+    <text x="250" y="48">♈</text><text x="362" y="75">♉</text><text x="435" y="175">♊</text>
+    <text x="443" y="295">♋</text><text x="372" y="400">♌</text><text x="258" y="450">♍</text>
+    <text x="145" y="450">♎</text><text x="68" y="398">♏</text><text x="42" y="295">♐</text>
+    <text x="58" y="175">♑</text><text x="135" y="75">♒</text><text x="245" y="48">♓</text>
+  </g>
+  <circle cx="250" cy="250" r="140" fill="url(#innerGrad)" stroke="#b8920a" stroke-width="1.5"/>
+  <circle cx="250" cy="250" r="80" fill="url(#centerGrad)" stroke="#8a6200" stroke-width="1"/>
+  <g stroke="#b8920a" stroke-width="1" opacity="0.3">
+    <line x1="250" y1="110" x2="380" y2="320"/><line x1="380" y1="320" x2="120" y2="320"/>
+    <line x1="120" y1="320" x2="290" y2="115"/><line x1="250" y1="110" x2="150" y2="350"/>
+    <line x1="350" y1="160" x2="140" y2="300"/>
+  </g>
+  <circle cx="250" cy="112" r="13" fill="#f5c518" stroke="#d4a00a" stroke-width="1.5"/>
+  <text x="250" y="117" font-size="14" text-anchor="middle" fill="#6b4000" font-family="serif">☀</text>
+  <circle cx="372" cy="175" r="12" fill="#e8e0c0" stroke="#b8a060" stroke-width="1.5"/>
+  <text x="372" y="180" font-size="13" text-anchor="middle" fill="#5a4800" font-family="serif">☽</text>
+  <circle cx="400" cy="250" r="11" fill="#d0c8a0" stroke="#a09060" stroke-width="1.5"/>
+  <text x="400" y="255" font-size="12" text-anchor="middle" fill="#5a4800" font-family="serif">☿</text>
+  <circle cx="372" cy="325" r="12" fill="#f0c0c0" stroke="#c08080" stroke-width="1.5"/>
+  <text x="372" y="330" font-size="13" text-anchor="middle" fill="#5a2020" font-family="serif">♀</text>
+  <circle cx="250" cy="388" r="12" fill="#e09080" stroke="#b06040" stroke-width="1.5"/>
+  <text x="250" y="393" font-size="13" text-anchor="middle" fill="#5a2000" font-family="serif">♂</text>
+  <circle cx="128" cy="325" r="13" fill="#c8d8f0" stroke="#7090c0" stroke-width="1.5"/>
+  <text x="128" y="330" font-size="14" text-anchor="middle" fill="#204080" font-family="serif">♃</text>
+  <circle cx="100" cy="250" r="12" fill="#c8c0a0" stroke="#807050" stroke-width="1.5"/>
+  <text x="100" y="255" font-size="12" text-anchor="middle" fill="#403820" font-family="serif">♄</text>
+  <text x="250" y="258" font-size="30" text-anchor="middle" fill="#8a6200" opacity="0.4" font-family="serif">✦</text>
+</svg>
+    </div>
+    <div class="preview-info">
+      <h2>✦ Cosa vedrai nel tuo Tema Natale</h2>
+      <ul class="planet-list">
+        <li><span class="planet-sym">☀️</span><span><strong>Sole</strong> — la tua identità e scopo di vita</span></li>
+        <li><span class="planet-sym">🌙</span><span><strong>Luna</strong> — le tue emozioni e istinti profondi</span></li>
+        <li><span class="planet-sym">↑</span><span><strong>Ascendente</strong> — come ti mostri al mondo</span></li>
+        <li><span class="planet-sym">☿</span><span><strong>Mercurio</strong> — la tua mente e comunicazione</span></li>
+        <li><span class="planet-sym">♀</span><span><strong>Venere</strong> — amore, bellezza e valori</span></li>
+        <li><span class="planet-sym">♂</span><span><strong>Marte</strong> — energia, desideri e azione</span></li>
+        <li><span class="planet-sym">♃</span><span><strong>Giove</strong> — fortuna ed espansione</span></li>
+        <li><span class="planet-sym">♄</span><span><strong>Saturno</strong> — prove e lezioni di vita</span></li>
+        <li><span class="planet-sym">🏠</span><span><strong>12 Case</strong> — le aree della tua vita</span></li>
+      </ul>
+      <p class="preview-quote">"Il tema natale è la mappa dell'anima —<br>ogni pianeta racconta la tua storia."<br><em>— Flavia Astrologa</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-section">
+  <h2 class="form-title">⭐ Inserisci i tuoi dati ⭐</h2>
+  <div class="form-box">
+    <p class="form-intro">
+      Compila il modulo qui sotto.<br>
+      Verrai reindirizzata al calcolatore gratuito di <strong>Astro-Seek</strong> in italiano.
+    </p>
+
+    <div class="steps-row">
+      <div class="step-item">
+        <div class="step-icon">📅</div>
+        <p>Data di nascita</p>
+      </div>
+      <div class="step-item">
+        <div class="step-icon">🕐</div>
+        <p>Ora di nascita</p>
+      </div>
+      <div class="step-item">
+        <div class="step-icon">📍</div>
+        <p>Luogo di nascita</p>
+      </div>
+    </div>
+
+    <form id="natalForm" onsubmit="calcolaTemaNatale(event)">
+      <div class="form-group">
+        <label>Il tuo nome</label>
+        <input type="text" id="nome" placeholder="Es. Maria" required>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Giorno di nascita</label>
+          <input type="number" id="giorno" min="1" max="31" placeholder="Es. 15" required>
+        </div>
+        <div class="form-group">
+          <label>Mese di nascita</label>
+          <select id="mese" required>
+            <option value="">— Seleziona —</option>
+            <option value="1">Gennaio</option>
+            <option value="2">Febbraio</option>
+            <option value="3">Marzo</option>
+            <option value="4">Aprile</option>
+            <option value="5">Maggio</option>
+            <option value="6">Giugno</option>
+            <option value="7">Luglio</option>
+            <option value="8">Agosto</option>
+            <option value="9">Settembre</option>
+            <option value="10">Ottobre</option>
+            <option value="11">Novembre</option>
+            <option value="12">Dicembre</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Anno di nascita</label>
+          <input type="number" id="anno" min="1900" max="2024" placeholder="Es. 1985" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Ora di nascita</label>
+          <input type="number" id="ora" min="0" max="23" placeholder="Es. 14">
+          <p class="form-note">⏰ Se non la conosci lascia vuoto</p>
+        </div>
+        <div class="form-group">
+          <label>Minuti</label>
+          <input type="number" id="minuti" min="0" max="59" placeholder="Es. 30">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Città di nascita</label>
+        <input type="text" id="citta" placeholder="Es. Roma, Milano, Napoli..." required>
+        <p class="form-note">📍 Inserisci la città per esteso</p>
+      </div>
+
+      <button type="submit" class="submit-btn">
+        ⭐ Calcola il mio Tema Natale ⭐
+      </button>
+    </form>
+  </div>
+</section>
+
+<div class="cta">
+  <p>Vuoi un'interpretazione professionale del tuo tema natale?</p>
+  <a href="https://amber-konstanze-74.tiiny.site/#prenota" class="cta-btn">✦ Prenota una Consulenza con Flavia</a>
+</div>
+
+<footer class="site-footer">
+  ✦ &nbsp; ArcanaViva · Flavia Astrologa · Italia & Francia &nbsp; ✦
+</footer>
+
+<script>
+function calcolaTemaNatale(e) {
+  e.preventDefault();
+
+  const nome   = document.getElementById('nome').value.trim();
+  const giorno = document.getElementById('giorno').value;
+  const mese   = document.getElementById('mese').value;
+  const anno   = document.getElementById('anno').value;
+  const ora    = document.getElementById('ora').value || '12';
+  const minuti = document.getElementById('minuti').value || '0';
+  const citta  = document.getElementById('citta').value.trim();
+
+  // Build Astro-Seek URL (Italian version)
+  const url = `https://it.astro-seek.com/tema-natale-calcolo-oroscopo-online?name=${encodeURIComponent(nome)}&narozeni_den=${giorno}&narozeni_mesic=${mese}&narozeni_rok=${anno}&narozeni_hodina=${ora}&narozeni_minuta=${minuti}&narozeni_city=${encodeURIComponent(citta)}&send_chart=1`;
+
+  window.open(url, '_blank');
+}
+</script>
+</body>
+</html>
