@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simboli Illirici – ArcanaViva</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:        #8B5E0A;
+      --gold-light:  #C4880E;
+      --gold-mid:    #A06810;
+      --gold-pale:   #F5E4A0;
+      --gold-warm:   #D4A030;
+      --bg-deep:     #1C0F02;
+      --bg-mid:      #2A1604;
+      --bg-card:     #221205;
+      --bg-hero:     #2E1A05;
+      --text-main:   #F0D070;
+      --text-muted:  #B8882A;
+      --border:      #5A3808;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: linear-gradient(160deg, #1C0F02 0%, #2E1804 40%, #1A0D02 100%);
+      color: var(--text-main);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(20, 10, 2, 0.96);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 30px;
+      display: flex; align-items: center; justify-content: space-between;
+      backdrop-filter: blur(8px);
+    }
+    nav .brand {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.05rem;
+      color: var(--gold-pale);
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+    nav .brand em { font-style: italic; color: var(--gold-warm); font-family: 'EB Garamond', serif; }
+    nav ul { list-style: none; display: flex; gap: 28px; }
+    nav ul a {
+      color: var(--text-muted); text-decoration: none;
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 1.5px;
+      transition: color .25s;
+    }
+    nav ul a:hover { color: var(--gold-pale); }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 80px 20px 60px;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(180,110,10,0.18) 0%, transparent 65%),
+        radial-gradient(ellipse at 20% 50%, rgba(120,70,5,0.10) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 50%, rgba(120,70,5,0.10) 0%, transparent 50%);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-badge {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 4px;
+      color: var(--gold-warm);
+      border: 1px solid var(--border);
+      padding: 5px 20px;
+      margin-bottom: 28px;
+      border-radius: 2px;
+    }
+    .hero h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.8rem, 5vw, 3.2rem);
+      color: var(--gold-pale);
+      letter-spacing: 3px;
+      line-height: 1.3;
+      margin-bottom: 22px;
+      text-shadow: 0 0 50px rgba(200,140,20,0.3);
+    }
+    .hero-divider {
+      display: flex; align-items: center; justify-content: center; gap: 14px;
+      margin: 0 auto 24px; max-width: 420px;
+    }
+    .hero-divider::before, .hero-divider::after {
+      content: ''; flex: 1; height: 1px;
+    }
+    .hero-divider::before { background: linear-gradient(to right, transparent, var(--border)); }
+    .hero-divider::after  { background: linear-gradient(to left,  transparent, var(--border)); }
+    .hero-divider span { color: var(--gold-warm); font-size: 1.1rem; }
+    .hero p {
+      max-width: 640px; margin: 0 auto;
+      color: var(--text-muted); font-style: italic; font-size: 1.05rem;
+    }
+
+    /* ── INTRO ── */
+    .intro {
+      max-width: 760px; margin: 56px auto; padding: 0 24px;
+      text-align: center; color: #C09040; font-size: 1rem;
+    }
+    .intro blockquote {
+      border-left: 3px solid var(--border);
+      padding: 12px 20px;
+      margin: 28px auto;
+      max-width: 540px;
+      text-align: left;
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      background: rgba(180,120,10,0.05);
+      border-radius: 0 4px 4px 0;
+    }
+
+    /* ── GRID ── */
+    .section-title {
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 5px;
+      color: var(--gold-mid);
+      text-transform: uppercase;
+      margin-bottom: 46px;
+    }
+    .section-title::before { content: '✦  '; }
+    .section-title::after  { content: '  ✦'; }
+
+    .symbols-section { padding: 20px 24px 80px; max-width: 1100px; margin: 0 auto; }
+
+    .symbols-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
+      gap: 26px;
+    }
+
+    .symbol-card {
+      background: linear-gradient(145deg, #2A1606, #1E0E03);
+      border: 1px solid #3A2208;
+      border-radius: 6px;
+      padding: 26px 14px 18px;
+      text-align: center;
+      transition: border-color .3s, transform .3s, box-shadow .3s;
+    }
+    .symbol-card:hover {
+      border-color: var(--gold-mid);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 36px rgba(160,104,16,0.18);
+    }
+
+    .symbol-card svg {
+      display: block; margin: 0 auto 14px;
+      width: 108px; height: 108px;
+      filter: drop-shadow(0 0 7px rgba(196,136,14,0.4));
+    }
+
+    .symbol-card .name-al {
+      font-family: 'Cinzel', serif;
+      font-size: 0.67rem;
+      letter-spacing: 2px;
+      color: var(--gold-pale);
+      display: block;
+      margin-bottom: 3px;
+    }
+    .symbol-card .name-it {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    .symbol-card .meaning {
+      margin-top: 10px;
+      font-size: 0.81rem;
+      color: #906830;
+      line-height: 1.5;
+    }
+
+    /* ── OUTRO ── */
+    .outro {
+      text-align: center;
+      padding: 60px 24px 80px;
+      border-top: 1px solid var(--border);
+      background: radial-gradient(ellipse at 50% 100%, rgba(160,100,10,0.12) 0%, transparent 65%);
+    }
+    .outro p { color: var(--text-muted); font-style: italic; max-width: 560px; margin: 0 auto 32px; }
+    .outro a.cta {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.76rem;
+      letter-spacing: 3px;
+      color: #0E0600;
+      background: linear-gradient(135deg, var(--gold-pale), var(--gold-warm));
+      padding: 14px 36px;
+      border-radius: 3px;
+      text-decoration: none;
+      transition: opacity .25s;
+    }
+    .outro a.cta:hover { opacity: .85; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 22px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 3px;
+      color: var(--border);
+      border-top: 1px solid #2A1604;
+    }
+
+    @media (max-width: 520px) {
+      .symbols-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      nav ul { gap: 12px; }
+      nav ul a { font-size: 0.65rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="brand" href="#">ArcanaViva · <em>Flavia Astrologa</em></a>
+  <ul>
+    <li><a href="#">Servizi</a></li>
+    <li><a href="#">Flavia</a></li>
+    <li><a href="#">Simboli</a></li>
+    <li><a href="tel:00355697658561">📞 Contattami</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-badge">✦ Tradizione Illirica Antica ✦</div>
+  <h1>Simboli Illirici<br/>Sacri</h1>
+  <div class="hero-divider"><span>◆</span></div>
+  <p>Ogni segno è un portale verso la saggezza degli antichi.<br/>
+     La stirpe illirica parlava al cosmo attraverso questi simboli.</p>
+</header>
+
+<!-- INTRO -->
+<section class="intro">
+  <p>
+    La cosmogonia illirica è una delle tradizioni spirituali più antiche dei Balcani.
+    I simboli qui raccolti provengono da reperti archeologici, tumuli funerari e artefatti bronzei
+    risalenti al I millennio a.C. — testimonianze di una civiltà che dialogava con le forze
+    del sole, della luna, della terra e del cosmo.
+  </p>
+  <blockquote>
+    Il Serpente come Totem Supremo collegava il mondo sotterraneo a quello terreno,
+    indicando una cosmogonia legata alla terra e alle sue forze misteriose.
+  </blockquote>
+</section>
+
+<!-- SYMBOLS -->
+<section class="symbols-section">
+  <p class="section-title">I Quindici Simboli Sacri</p>
+  <div class="symbols-grid">
+
+    <!-- Shared defs inside first SVG, reused via href -->
+
+    <!-- 1 -->
+    <div class="symbol-card">
+      <svg viewBox="0 0 180 180">
+        <defs>
+          <radialGradient id="cardBg" cx="42%" cy="32%" r="68%">
+            <stop offset="0%" stop-color="#3A1E06"/>
+            <stop offset="100%" stop-color="#120800"/>
+          </radialGradient>
+          <filter id="glow"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <rect width="180" height="180" fill="url(#cardBg)" rx="8"/>
+        <g filter="url(#glow)" fill="none" stroke="#C4880E" stroke-width="2.8" stroke-linecap="round">
+          <path d="M 90,90 C 90,78 98,70 108,70 C 126,70 140,84 140,102 C 140,130 118,148 90,148 C 54,148 26,120 26,88 C 26,44 62,14 108,14 C 162,14 196,54 196,102"/>
+          <circle cx="90" cy="90" r="7" fill="#C4880E"/>
+        </g>
+      </svg>
+      <span class="name-al">SPIRALA DIELLORE</span>
+      <span class="name-it">Spirale Solare</span>
+      <p class="meaning">Vita, rinascita e ciclo eterno dell'energia cosmica</p>
+    </div>
+
+    <!-- 2 -->
+    <div class="symbol-card">
+      <svg viewBox="0 0 180 180">
+        <rect width="180" height="180" fill="url(#cardBg)" rx="8"/>
+        <g filter="url(#glow)" fill="none" stroke="#C4880E" stroke-width="2.2">
+          <circle cx="90" cy="85" r="52"/><circle cx="90" cy="85" r="36"/>
+          <circle cx="90" cy="85" r="18"/><circle cx="90" cy="85" r="6" fill="#C4880E" opacity="0.8"/>
+          <line x1="90" y1="33" x2="90" y2="18"/><line x1="90" y1="137" x2="90" y2="152"/>
+          <line x1="38" y1="85" x2="22" y2="85"/><line x1="142" y1="85" x2="158" y2="85"/>
+          <line x1="53" y1="48" x2="42" y2="37"/><line x1="127" y1="48" x2="138" y2="37"/>
+          <line x1="53" y1="122" x2="42" y2="133"/><line x1="127" y1="122" x2="138" y2="133"/>
+        </g>
+      </svg>
+      <span class="name-al">RRETHI DIELLOR</span>
+      <span class="name-it">Cerchio Solare</span>
+      <p class="meaning">Il sole e i suoi raggi, centro dell'universo illirico</p>
+    </div>
+
+    <!-- 3 -->
+    <div class="symbol-card">
+      <svg viewBox="0 0 180 180">
+        <rect width="180" height="180" fill="url(#cardBg)" rx="8"/>
+        <g filter="url(#glow)" fill="none" stroke="#C4880E" stroke-width="2.5" stroke-linecap="round">
+          <line x1="90" y1="18" x2="90" y2="162"/>
+          <path d="M 90,50 C 68,40 40,44 36,62 C 32,80 54,88 90,86"/>
+          <path d="M 90,50 C 112,40 140,44 144,62 C 148,80 126,88 90,86"/>
+          <path d="M 90,86 C 54,84 32,92 36,110 C 40,128 68,132 90,120"/>
+          <path d="M 90,86 C 126,84 148,92 144,110 C 140,128 112,132 90,120"/>
+          <ellipse cx="90" cy="162" rx="14" ry="5" fill="#5C3D0C" stroke="#C4880E"/>
+          <ellipse cx="90" cy="18"  rx="8"  ry="4" fill="#5C3D0C" stroke="#C4880E"/>
+        </g>
+      </svg>
+      <span class="name-al">LABRYSI</span>
+      <span class="name-it">Labrys – Doppia Ascia</span>
+      <p class="meaning">Potere divino, dualità e protezione sacra</p>
+    </div>
+
+    <!-- 4 -->
+    <div class="symbol-card">
+      <svg viewBox="0 0 180 180">
+        <rect width="180" height="180" fill="url(#cardBg)" rx="8"/>
+        <g filter="url(#glow)" fill="none" stroke="#C4880E" stroke-width="2.5" stroke-linecap="round">
+          <path d="M 30,145 C 30,145 18,112 40,90 C 62,68 94,78 94,56 C 94,34 72,22 60,30 C 48,38 54,55 68,52 C 82,50 86,36 80,26"/>
+          <path d="M 80,26 C 84,20 92,15 96,20"/>
+          <circle cx="98" cy="22" r="4" fill="#C4880E"/>
+          <circle cx="90" cy="18" r="2.5" fill="#C4880E"/>
+          <path d="M 30,145 C 42,157 64,163 86,155 C 108,147 120,130 142,136 C 158,141 162,155 155,164"/>
+          <path d="M 155,164 C 159,169 157,175 150,173 C 148,168 152,165 155,164"/>
+        </g>
+      </svg>
+      <span class="name-al">GJARPRI</span>
+      <span class="name-it">Il Serpente</span>
+      <p class="meaning">Totem supremo illirico, mediatore tra i mondi</p>
+    </div>
+
+    <!-- 5 -->
+    <div class="symbol-card">
+      <svg viewBox="0 0 180 180">
+        <rect width="180" height="180" fill="url(#cardBg)" rx="8"/>
+        <g filter="url(#glow)" fill="none" stroke="#C4880E" stroke-width="2.5" stroke-linecap="round">
+          <path d="M 26,100 C 48,78 80,70 112,76 C 144,82 160,100 154,116 C 148,130 130,135 112,130 C 94,126 80,114 80,100"/>
+          <path d="M 112,76 C 118,57 128,42 138,34 C 144,38 144,54 132,68"/>
+          <path d="M 132,68 C 146,56 160,50 168,55 C 166,67 154,73 140,76"/>
+          <circle cx="140" cy="36" r="5" fill="#C4880E"/>
+          <path d="M 26,100 C 16,110 14,122 20,126"/>
+          <path d="M 80,100 C 68,114 66,128 74,134"/>
+          <line x1="20" y1="126" x2="74" y2="134"/>
+        </g>
+      </svg>
+      <span class="name-al">ZOGU I UJIT</span>
+      <span class="name-it">Uccello Acquatico</span>
+      <p class="meaning">Messaggero tra terra e cielo, simbolo solare</p>
+    </div>
+
+    <!-- 6 -->
+    <div class="symbol-card">
+      <svg viewBox="0 0 180 180">
+        <rect width="180" height="180" fill="url(#cardBg)" rx="8"/>
+        <g filter="url(#glow)" fill="none" stroke="#C4880E" stroke-width="2.5" stroke-linecap="round">
+          <ellipse cx="90" cy="112" rx="38" ry="28"/>
+          <line x1="90" y1="84" x2="90" y2="60"/>
+          <path d="M 90,72 C 80,58 68,48 62,38 C 58,30 60,24 66,28 C 72,36 78,50 82,60"/>
+          <path d="M 66,28 C 62,22 60,14 64,12 C 68,16 70,24 68,32"/>
+          <path d="M 90,72 C 100,58 112,48 118,38 C 122,30 120,24 114,28 C 108,36 102,50 98,60"/>
+          <path d="M 114,28 C 118,22 120,14 116,12 C 112,16 110,24 112,32"/>
+          <circle cx="76" cy="105" r="3.5" fill="#C4880E"/>
+          <path d="M 76,118 Q 90,128 104,118"/>
+          <line x1="66" y1="138" x2="60" y2="160"/>
+          <line x1="80" y1="140" x2="78" y2="160"/>
+          <line x1="100" y1="140" x2="102" y2="160"/>
+          <line x1="114" y1="138" x2="120" y2="160"/>
+        </g>
+      </svg>
+      <span class="name-al">DRERI</span>
+      <span class="name-it">Il Cervo</span>
+      <p class="meaning">Animale sacro del culto solare, forza e nobiltà</p>
+    </div>
+
+    <!-- 7 -->
+    <div class="symbol-card">
+      <svg viewBox="0 0 180 180">
+        <rect width="180" height="180" fill="url(#cardBg)" rx="8"/>
+        <g filter="url(#glow)" fill="none" stroke="#C4880E" stroke-width="2.2" stroke-linecap="round">
+          <path d="M 52,124 C 52,102 48,72 52,48 C 54,38 62,38 64,48 C 66,62 66,82 66,98"/>
+          <path d="M 66,98 C 66,76 62,44 66,26 C 68,16 76,16 78,26 C 80,44 80,74 80,98"/>
+          <path d="M 80,98 C 80,76 76,44 80,26 C 82,16 90,16 92,26 C 94,44 94,74 94,98"/>
+          <path d="M 94,98 C 94,76 90,48 94,34 C 96,24 104,26 106,36 C 108,52 108,78 108,98"/>
+          <path d="M 52,124 C 48,134 48,148 56,152 C 74,158 106,152 112,136 C 114,128 112,112 108,98 C 94,98 80,98 66,98 C 58,98 52,110 52,124 Z"/>
+          <path d="M 90,26 C 100,20 112,24 114,36"/>
+          <circle cx="72" cy="62" r="3.5" fill="#C4880E" opacity="0.7"/>
+        </g>
+      </svg>
+      <span class="name-al">DORA E SABAZIOSIT</span>
+      <span class="name-it">Mano di Sabazios</span>
+      <p class="meaning">Divinità protettrice, benedizione e potere divino</p>
+    </div>
+
+    <!-- 8 -->
+    <div class="symbol-card">
+      <svg viewBox="0 0 180 180">
+        <rect width="180" height="180" fill="url(#cardBg)" rx="8"/>
+        <g filter="url(#glow)" fill="none" stroke="#C4880E" stroke-width="2.5" stroke-linecap="round">
+          <circle cx="90" cy="88" r="55"/>
+          <circle cx="90" cy="88" r="15"/>
+          <line x1="90" y1="73" x2="90" y2="34"/><line x1="90" y1="103" x2="90" y2="142"/>
+          <line x1="75" y1="88" x2="36" y2="88"/><line x1="105" y1="88" x2="144" y2="88"/>
+          <line x1="79" y1="77" x2="52" y2="50"/><line x1="101" y1="77" x2="128" y2="50"/>
+          <line x1="79" y1="99" x2="52" y2="126"/><line x1="101" y1="99" x2="128" y2="126"/>
+          <path d="M 90,73 L 105,73 L 105,88" fill="none"/>
+          <path d="M 105,88 L 105,103 L 90,103" fill="none"/>
+          <path d="M 90,103 L 75,103 L 75,88" fill="none"/>
+          <path d="M 75,88 L 75,73 L 90,73" fill="none"/>
+        </g>
+      </svg>
+      <span class="name-al">DIELLI ILIR</span>
+      <span class="name-it">Sole Illirico</span>
+      <p class="meaning">Il sole eterno, cuore della cosmogonia illirica</p>
+    </div>
+
+    <!-- 9 -->
+    <div class="symbol-card">
+      <svg viewBox="0 0 180 180">
+        <rect width="180" height="180" fill="url(#cardBg)" rx="8"/>
+        <g filter="url(#glow)" fill="none" stroke="#C4880E" stroke-width="2.5" stroke-linecap="round">
+          <path d="M 58,82 C 58,60 72,46 90,44 C 108,46 120,60 118,82"/>
+          <path d="M 58,82 C 46,86 38,98 42,112 C 46,124 60,130 78,128"/>
+          <path d="M 118,82 C 130,86 136,98 132,110 C 128,120 116,126 104,124"/>
+          <path d="M 78,128 C 80,138 78,150 72,154"/>
+          <path d="M 104,124 C 106,136 108,148 114,152"/>
+          <path d="M 78,128 C 90,132 104,124 104,124"/>
+          <path d="M 72,154 C 68,160 62,160 60,156"/>
+          <path d="M 114,152 C 118,158 124,158 126,154"/>
+          <path d="M 90,44 C 88,30 82,20 78,16"/>
+          <path d="M 78,16 C 72,10 68,12 70,18 C 72,24 78,26 80,22"/>
+          <path d="M 90,44 C 92,32 98,24 106,20 C 112,16 118,20 114,28"/>
+          <circle cx="74" cy="60" r="3.5" fill="#C4880E"/>
+        </g>
+      </svg>
+      <span class="name-al">KALI</span>
+      <span class="name-it">Il Cavallo</span>
+      <p class="meaning">Libertà, potere guerriero e viaggio verso l'aldilà</p>
+    </div>
+
+    <!-- 10 -->
+    <div class="symbol-card">
+      <svg viewBox="0 0 180 180">
+        <rect width="180" height="180" fill="url(#cardBg)" rx="8"/>
+        <g filter="url(#glow)" fill="none" stroke="#C4880E" stroke-width="2.2" stroke-linecap="round">
+          <path d="M 90,16 C 120,16 150,28 154,54 C 158,80 150,112 130,134 C 116,150 90,164 90,164 C 90,164 64,150 50,134 C 30,112 22,80 26,54 C 30,28 60,16 90,16 Z"/>
+          <path d="M 90,30 C 114,30 138,40 140,62 C 142,82 136,108 120,126 C 110,138 90,148 90,148 C 90,148 70,138 60,126 C 44,108 38,82 40,62 C 42,40 66,30 90,30 Z"/>
+          <circle cx="90" cy="90" r="20"/>
+          <line x1="90" y1="30" x2="90" y2="70"/><line x1="90" y1="110" x2="90" y2="148"/>
+          <line x1="50" y1="90" x2="70" y2="90"/><line x1="110" y1="90" x2="130" y2="90"/>
+        </g>
+      </svg>
+      <span class="name-al">MBUROJA ILIRE</span>
+      <span class="name-it">Scudo Illirico</span>
+      <p class="meaning">Protezione del guerriero, onore e difesa sacra</p>
+    </div>
+
+    <!-- 11 -->
+    <div class="symbol-card">
+      <svg viewBox="0 0 180 180">
+        <rect width="180" height="180" fill="url(#cardBg)" rx="8"/>
+        <g filter="url(#glow)" fill="none" stroke="#C4880E" stroke-width="2.5" stroke-linecap="round">
+          <line x1="90" y1="14" x2="90" y2="166"/>
+          <path d="M 90,40 C 62,30 34,38 30,58 C 26,78 50,92 90,88"/>
+          <path d="M 90,40 C 118,30 146,38 150,58 C 154,78 130,92 90,88"/>
+          <ellipse cx="90" cy="166" rx="18" ry="7" fill="#5C3D0C" stroke="#C4880E"/>
+          <ellipse cx="90" cy="14"  rx="9"  ry="4" fill="#5C3D0C" stroke="#C4880E"/>
+          <ellipse cx="90" cy="88" rx="7" ry="4" fill="#C4880E" opacity="0.4"/>
+        </g>
+      </svg>
+      <span class="name-al">SËPATA ILIRE</span>
+      <span class="name-it">Ascia Illirica</span>
+      <p class="meaning">Arma sacra, simbolo di giustizia e potere divino</p>
+    </div>
+
+    <!-- 12 -->
+    <div class="symbol-card">
+      <svg viewBox="0 0 180 180">
+        <rect width="180" height="180" fill="url(#cardBg)" rx="8"/>
+        <g filter="url(#glow)" fill="none" stroke="#C4880E" stroke-width="2.5" stroke-linecap="round">
+          <path d="M 120,38 C 98,34 72,42 58,62 C 44,82 44,110 58,130 C 72,150 96,158 118,154"/>
+          <path d="M 118,38 C 106,56 102,76 106,96 C 110,116 120,132 118,154"/>
+          <line x1="118" y1="96" x2="156" y2="96"/>
+          <line x1="148" y1="80" x2="118" y2="96"/><line x1="148" y1="112" x2="118" y2="96"/>
+          <circle cx="156" cy="96" r="5.5" fill="#C4880E" opacity="0.7"/>
+          <circle cx="148" cy="78" r="3" fill="#C4880E" opacity="0.5"/>
+          <circle cx="148" cy="114" r="3" fill="#C4880E" opacity="0.5"/>
+        </g>
+      </svg>
+      <span class="name-al">HËNA GJYSMAKE</span>
+      <span class="name-it">Luna Crescente</span>
+      <p class="meaning">Cicli lunari, femminilità e forze notturne</p>
+    </div>
+
+    <!-- 13 -->
+    <div class="symbol-card">
+      <svg viewBox="0 0 180 180">
+        <rect width="180" height="180" fill="url(#cardBg)" rx="8"/>
+        <g filter="url(#glow)" fill="none" stroke="#C4880E" stroke-linecap="round">
+          <circle cx="90" cy="88" r="55" stroke-width="2.5"/>
+          <circle cx="90" cy="88" r="20" stroke-width="2"/>
+          <circle cx="90" cy="88" r="8" fill="#C4880E" opacity="0.55" stroke-width="0"/>
+          <line x1="90" y1="33" x2="90" y2="148" stroke-width="3"/>
+          <line x1="35" y1="88" x2="145" y2="88" stroke-width="3"/>
+          <line x1="51" y1="49" x2="129" y2="127" stroke-width="1.5"/>
+          <line x1="129" y1="49" x2="51" y2="127" stroke-width="1.5"/>
+        </g>
+      </svg>
+      <span class="name-al">KRYQI DIELLOR</span>
+      <span class="name-it">Croce Solare</span>
+      <p class="meaning">Unione dei quattro elementi, centro cosmico</p>
+    </div>
+
+    <!-- 14 -->
+    <div class="symbol-card">
+      <svg viewBox="0 0 180 180">
+        <rect width="180" height="180" fill="url(#cardBg)" rx="8"/>
+        <g filter="url(#glow)" fill="none" stroke="#C4880E" stroke-width="2.2" stroke-linecap="round">
+          <circle cx="90" cy="52" r="26"/><circle cx="90" cy="52" r="14"/>
+          <circle cx="90" cy="52" r="6" fill="#C4880E" opacity="0.6"/>
+          <line x1="90" y1="78" x2="90" y2="95"/>
+          <path d="M 62,95 C 62,82 74,76 90,76 C 106,76 118,82 118,95"/>
+          <path d="M 62,95 C 50,106 46,122 52,134 C 58,144 72,148 90,148 C 108,148 122,144 128,134 C 134,122 130,108 118,95"/>
+          <path d="M 70,148 C 68,156 72,163 78,163"/>
+          <path d="M 110,148 C 112,156 108,163 102,163"/>
+          <line x1="78" y1="163" x2="102" y2="163"/>
+        </g>
+      </svg>
+      <span class="name-al">VARËSI ILIR</span>
+      <span class="name-it">Pendente Illirico</span>
+      <p class="meaning">Amuleto funerario, connessione con gli antenati</p>
+    </div>
+
+    <!-- 15 -->
+    <div class="symbol-card">
+      <svg viewBox="0 0 180 180">
+        <rect width="180" height="180" fill="url(#cardBg)" rx="8"/>
+        <g filter="url(#glow)" fill="none" stroke="#C4880E" stroke-linecap="round">
+          <circle cx="90" cy="88" r="28" stroke-width="2.5"/>
+          <circle cx="90" cy="88" r="10" fill="#C4880E" opacity="0.4" stroke-width="0"/>
+          <line x1="90" y1="60" x2="90" y2="38" stroke-width="3"/>
+          <line x1="90" y1="116" x2="90" y2="138" stroke-width="3"/>
+          <line x1="62" y1="88" x2="40" y2="88" stroke-width="3"/>
+          <line x1="118" y1="88" x2="140" y2="88" stroke-width="3"/>
+          <line x1="70" y1="68" x2="54" y2="52" stroke-width="2"/>
+          <line x1="110" y1="68" x2="126" y2="52" stroke-width="2"/>
+          <line x1="70" y1="108" x2="54" y2="124" stroke-width="2"/>
+          <line x1="110" y1="108" x2="126" y2="124" stroke-width="2"/>
+          <line x1="90" y1="60" x2="84" y2="48" stroke-width="1.5"/>
+          <line x1="90" y1="60" x2="96" y2="48" stroke-width="1.5"/>
+          <line x1="118" y1="88" x2="130" y2="82" stroke-width="1.5"/>
+          <line x1="118" y1="88" x2="130" y2="94" stroke-width="1.5"/>
+          <line x1="62" y1="88" x2="50" y2="82" stroke-width="1.5"/>
+          <line x1="62" y1="88" x2="50" y2="94" stroke-width="1.5"/>
+          <line x1="90" y1="116" x2="84" y2="128" stroke-width="1.5"/>
+          <line x1="90" y1="116" x2="96" y2="128" stroke-width="1.5"/>
+        </g>
+      </svg>
+      <span class="name-al">DIELLI RREZËTUES</span>
+      <span class="name-it">Sole Raggiante</span>
+      <p class="meaning">Splendore solare, illuminazione spirituale e vittoria</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- OUTRO -->
+<section class="outro">
+  <p>
+    Vuoi scoprire quale simbolo illirico risuona con la tua anima?<br/>
+    Prenota una consulenza con Flavia e lasciati guidare dagli antichi segni del cosmo.
+  </p>
+  <a class="cta" href="tel:00355697658561">✦ Contatta Flavia ✦</a>
+</section>
+
+<footer>✦ ArcanaViva · Flavia Astrologa · Italia &amp; Francia ✦</footer>
+
+</body>
+</html>
