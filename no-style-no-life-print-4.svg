@@ -1,0 +1,179 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 480" width="700" height="480">
+  <defs>
+    <linearGradient id="bronzeV" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#E2B86A"/>
+      <stop offset="22%"  stop-color="#C99535"/>
+      <stop offset="55%"  stop-color="#8A5F18"/>
+      <stop offset="85%"  stop-color="#5E3C0C"/>
+      <stop offset="100%" stop-color="#3A2408"/>
+    </linearGradient>
+
+    <radialGradient id="earthGrad" cx="40%" cy="35%" r="65%">
+      <stop offset="0%"   stop-color="#F0D080"/>
+      <stop offset="40%"  stop-color="#C99535"/>
+      <stop offset="75%"  stop-color="#8A5F18"/>
+      <stop offset="100%" stop-color="#3A2408"/>
+    </radialGradient>
+
+    <linearGradient id="arcTop" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%"   stop-color="#E2B86A"/>
+      <stop offset="50%"  stop-color="#C99535"/>
+      <stop offset="100%" stop-color="#6A4410"/>
+    </linearGradient>
+    <linearGradient id="arcBot" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#6A4410"/>
+      <stop offset="50%"  stop-color="#C99535"/>
+      <stop offset="100%" stop-color="#E2B86A"/>
+    </linearGradient>
+
+    <filter id="warmGlow" x="-8%" y="-8%" width="116%" height="116%">
+      <feGaussianBlur stdDeviation="2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="arcGlow" x="-4%" y="-4%" width="108%" height="108%">
+      <feGaussianBlur stdDeviation="1.8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="ornGlow">
+      <feGaussianBlur stdDeviation="2.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="earthGlow">
+      <feGaussianBlur stdDeviation="3.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <clipPath id="earthClip">
+      <circle cx="350" cy="88" r="68"/>
+    </clipPath>
+  </defs>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&amp;display=swap');
+    .gothic {
+      font-family: 'UnifrakturMaguntia', 'Old English Text MT', 'Palatino Linotype', Georgia, serif;
+    }
+  </style>
+
+  <!-- ══════════════════════════════════
+       EARTH — circle with continents
+       Antique map style, bronze/gold
+  ══════════════════════════════════ -->
+  <g filter="url(#earthGlow)">
+
+    <!-- Ocean base — dark bronze -->
+    <circle cx="350" cy="88" r="68" fill="#3A2408" stroke="#C99535" stroke-width="1.8"/>
+
+    <!-- Continents clipped inside sphere — antique gold shapes -->
+    <!-- Simplified but recognisable world map silhouette scaled to r=68, centred 350,88 -->
+    <g clip-path="url(#earthClip)" fill="url(#earthGrad)" stroke="#8A5F18" stroke-width="0.5">
+
+      <!-- NORTH AMERICA -->
+      <path d="
+        M 288,42 C 292,38 300,36 308,38 C 314,40 318,44 320,50
+        C 322,56 318,62 314,66 C 310,70 304,72 298,74
+        C 294,76 290,78 287,82 C 284,86 282,90 280,86
+        C 278,82 278,76 280,70 C 282,64 284,56 284,50
+        C 284,46 286,44 288,42 Z
+      "/>
+
+      <!-- SOUTH AMERICA -->
+      <path d="
+        M 296,88 C 300,84 306,84 310,88 C 314,92 314,98 312,104
+        C 310,110 306,116 302,120 C 298,124 294,122 292,118
+        C 290,114 290,108 291,102 C 292,96 294,92 296,88 Z
+      "/>
+
+      <!-- EUROPE -->
+      <path d="
+        M 342,38 C 346,34 352,34 356,38 C 360,42 360,48 357,52
+        C 354,56 350,58 346,56 C 342,54 340,50 340,46
+        C 340,42 341,40 342,38 Z
+      "/>
+
+      <!-- AFRICA -->
+      <path d="
+        M 348,56 C 354,52 362,52 366,58 C 370,64 370,72 368,80
+        C 366,88 362,96 358,102 C 354,106 350,106 347,102
+        C 344,98 343,90 343,82 C 343,74 344,66 344,60
+        C 344,57 346,57 348,56 Z
+      "/>
+
+      <!-- ASIA (large) -->
+      <path d="
+        M 362,36 C 370,32 382,32 390,36 C 398,40 402,48 404,56
+        C 406,64 404,72 400,78 C 396,82 390,84 384,82
+        C 378,80 372,76 368,70 C 364,64 360,56 360,48
+        C 360,42 360,38 362,36 Z
+      "/>
+
+      <!-- AUSTRALIA -->
+      <path d="
+        M 390,96 C 396,92 404,93 408,98 C 412,103 410,110 406,114
+        C 402,118 396,118 392,114 C 388,110 387,104 388,100
+        C 388,98 389,97 390,96 Z
+      "/>
+
+      <!-- GREENLAND -->
+      <path d="
+        M 316,28 C 320,24 326,24 328,28 C 330,32 328,38 324,40
+        C 320,42 316,40 315,36 C 314,32 315,30 316,28 Z
+      "/>
+
+    </g>
+
+    <!-- Outer circle border -->
+    <circle cx="350" cy="88" r="68" fill="none" stroke="#C99535" stroke-width="1.8"/>
+
+    <!-- Subtle highlight -->
+    <ellipse cx="330" cy="64" rx="18" ry="12" fill="#FFF4A0" opacity="0.1" transform="rotate(-20,330,64)"/>
+
+  </g>
+
+  <!-- ══════════════════════════════════
+       TEXT
+  ══════════════════════════════════ -->
+
+  <!-- ROW 1: No Style — baseline y=258 -->
+  <text x="60" y="258"
+    class="gothic"
+    font-family="'UnifrakturMaguntia', 'Old English Text MT', 'Palatino Linotype', Georgia, serif"
+    font-size="96"
+    textLength="580"
+    lengthAdjust="spacing"
+    fill="url(#bronzeV)"
+    filter="url(#warmGlow)"
+  >No Style</text>
+
+  <!-- ROW 2: No Life — baseline y=368 -->
+  <text x="60" y="368"
+    class="gothic"
+    font-family="'UnifrakturMaguntia', 'Old English Text MT', 'Palatino Linotype', Georgia, serif"
+    font-size="96"
+    textLength="580"
+    lengthAdjust="spacing"
+    fill="url(#bronzeV)"
+    filter="url(#warmGlow)"
+  >No Life</text>
+
+  <!-- ══════════════════════════════════
+       ARCS
+  ══════════════════════════════════ -->
+
+  <!-- TOP ARC -->
+  <path d="M 638,178 A 292,68 0 0,0 62,178"
+    fill="none" stroke="url(#arcTop)" stroke-width="1.8"
+    stroke-linecap="round" filter="url(#arcGlow)"
+  />
+  <polygon points="62,178 74,164 58,192" fill="#C99535" filter="url(#ornGlow)"/>
+  <circle cx="638" cy="178" r="3.5" fill="#C99535" filter="url(#ornGlow)"/>
+
+  <!-- BOTTOM ARC -->
+  <path d="M 62,430 A 292,68 0 0,0 638,430"
+    fill="none" stroke="url(#arcBot)" stroke-width="1.8"
+    stroke-linecap="round" filter="url(#arcGlow)"
+  />
+  <polygon points="638,430 626,416 642,443" fill="#C99535" filter="url(#ornGlow)"/>
+  <circle cx="62" cy="430" r="3.5" fill="#C99535" filter="url(#ornGlow)"/>
+
+</svg>
